@@ -1,0 +1,45 @@
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+<div id="login" class="container">
+    <!--formulário login-->
+    <form class="row" action="" method="post">
+        <!--formulario-->
+        <div class="col" >
+            <!--Logo-->
+            <h1>Empresa Aérea</h1>
+                <!--Email-->
+                <label>Email</label>
+                <input type="email" class="form-control" placeholder="Email" 
+                name="email"
+                [(ngModel)]="auth.login"
+                #loginInput="ngModel"
+                required>
+                <div *ngIf="loginInput.touched" class="text-danger">
+                    <div *ngIf="loginInput.errors?.['required']">
+                        Login é obrigatório
+                    </div>
+                </div>
+                <!--Senha-->
+                <label>Senha</label>
+                <input type="password" class="form-control" placeholder="Senha" 
+                name="senha"
+                [(ngModel)]="auth.password"
+                #senhaInput="ngModel"
+                required>
+                <div *ngIf="senhaInput.touched" class="text-danger">
+                    <div *ngIf="senhaInput.errors?.['required']">
+                        Senha é obrigatória
+                    </div>
+                </div>
+
+                <!--Entrar-->
+                <button type="button" class="btn btn-primary">Entrar</button>
+                <!--Cadastrar-->
+                <a href="#" ><button type="button" class="btn btn-outline-secondary">Cadastrar</button></a>
+                <div class="text-danger">
+                    {{errorMessage}}
+                </div>
+        </div>
+        
+    </form>
+</div>
+</div>

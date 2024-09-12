@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+:root {
+    --primary-color: #1e40af;
+    --secondary-color: #818286;
+    --bg-color: #737373;
+    --bg-form-color: rgba(240, 248, 255, 0.882);
+}
+
+/* html, body { height: 100%; } */
+body {
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    background-color: var(--bg-color);
+}
+
+

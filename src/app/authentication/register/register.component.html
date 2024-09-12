@@ -1,0 +1,163 @@
+<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
+<div id="cadastro">
+
+    <h1>Empresa Aérea</h1>
+    <!--Titulo-->
+    <h2>Cadastro</h2>
+
+    <!--formulario-->
+    <form class="row" action="" method="post">    
+        <!--Nome-->
+        <div class="form-group col-6">
+            <label>Nome</label>
+            <input type="text" class="form-control" placeholder="Nome"
+            name="name"
+            [(ngModel)]="customer.name"
+            #nameInput="ngModel"
+            required>
+            <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)" class="text-danger">
+                <div *ngIf="nameInput.errors?.['required']">
+                    Nome é obrigatório
+                </div>
+            </div>
+        </div>
+
+        <!--CPF-->
+        <div class="form-group col-6">
+            <label>CPF</label>
+            <input type="text" class="form-control" placeholder="CPF" 
+            name="cpf"
+            [(ngModel)]="customer.cpf"
+            #cpfInput="ngModel"
+            pattern="\d{3}\d{3}\d{3}\d{2}"
+            required>
+            <div *ngIf="cpfInput.invalid && (cpfInput.dirty || cpfInput.touched)" class="text-danger">
+                <div *ngIf="cpfInput.errors?.['required']">
+                    CPF é obrigatório
+                </div>
+                <div *ngIf="cpfInput.errors?.['pattern']">
+                    Por favor, insira um CPF válido
+                </div>
+            </div>
+        </div>
+
+        <!--Email-->
+        <div class="form-group col-6">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Email" 
+            name="email"
+            [(ngModel)]="customer.email"
+            #emailInput="ngModel"
+            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+            required>
+            <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="text-danger">
+                <div *ngIf="emailInput.errors?.['required']">
+                    Email é obrigatório
+                </div>
+                <div *ngIf="emailInput?.errors?.['pattern']">
+                    Por favor, insira um email válido
+                </div>
+            </div>
+        </div>
+        
+
+        <!--Rua-->
+        <div class="form-group col-6">
+            <label>Rua</label>
+            <input type="text" class="form-control" placeholder="Rua" 
+            name="street"
+            [(ngModel)]="address.street"
+            #streetInput="ngModel"
+            required>
+            <div *ngIf="streetInput.invalid && (streetInput.dirty || streetInput.touched)" class="text-danger">
+                <div *ngIf="streetInput.errors?.['required']">
+                    Rua é obrigatório.
+                </div>
+            </div>
+        </div>
+
+        <!--Complement-->
+        <div class="form-group col-6">
+            <label>Complemento</label>
+            <input type="text" class="form-control" placeholder="Complemento" 
+            name="complement"
+            [(ngModel)]="address.complement"
+            required>
+        </div>
+
+        <!--CEP-->
+        <div class="form-group col-6">
+            <label>CEP</label>
+            <input type="text" class="form-control" placeholder="CEP" 
+            name="cep"
+            [(ngModel)]="address.CEP"
+            #cepInput="ngModel"
+            pattern="\d{5}\d{3}"
+            required>
+            <div *ngIf="cepInput.invalid && (cepInput.dirty || cepInput.touched)" class="text-danger">
+                <div *ngIf="cepInput.errors?.['required']">
+                    CEP é obrigatório
+                </div>
+                <div *ngIf="cepInput.errors?.['pattern']">
+                    Por favor, insira um CEP válido
+                </div>
+            </div>
+        </div>
+
+        <!--state-->
+        <div class="form-group col-2">
+            <label>state</label>
+            <input type="text" class="form-control" placeholder="state" 
+            name="state"
+            [(ngModel)]="address.state"
+            #stateInput="ngModel"
+            required>
+            <div *ngIf="stateInput.invalid && (stateInput.dirty || stateInput.touched)" class="text-danger">
+                <div *ngIf="stateInput.errors?.['required']">
+                    state é obrigatório
+                </div>
+            </div>
+        </div>
+
+        <!--city-->
+        <div class="form-group col-4">
+            <label>city</label>
+            <input type="text" class="form-control" placeholder="city" 
+            name="city"
+            [(ngModel)]="address.city"
+            #cityInput="ngModel"
+            required>
+            <div *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)" class="text-danger">
+                <div *ngIf="cityInput.errors?.['required']">
+                    city é obrigatória
+                </div>
+            </div>
+        </div>
+
+        <!--password-->
+        <div class="form-group col-6">
+            <label>password</label>
+            <input type="password" class="form-control" placeholder="password" 
+            name="password"
+            [(ngModel)]="customer.password"
+            #passwordInput="ngModel"
+            required>
+            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger">
+                <div *ngIf="passwordInput.errors?.['required']">
+                    password é obrigatória
+                </div>
+            </div>
+        </div>
+
+        <!--Cadastrar-->
+        <div class="form-group col-2">    
+            <button type="button" class="btn btn-primary" >Cadastrar</button>
+        </div>
+        
+        <!--Cancelar-->
+        <div class="form-group col-2">
+            <a href="#" ><button type="button" class="btn btn-outline-secondary">Cancelar</button></a>
+        </div>
+    </form>
+</div>
+</div>

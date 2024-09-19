@@ -1,0 +1,11 @@
+
+.content-page {
+    flex-direction: column;
+
+    height: 100vh;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: end;
+}

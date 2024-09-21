@@ -1,0 +1,63 @@
+.vh-100 {
+    height: 100vh;
+}
+
+.h-10 {
+    height: 10%;
+}
+
+.h-90 {
+    height: 90%;
+}
+
+.padding-2{
+    padding: 2%;
+}
+
+.bg-orange {
+    background-color: #FF725E !important;
+}
+
+.text-orange {
+    color: #F0452D !important;
+}
+
+.btn-orange{
+    background-color: #F0452D !important;
+}
+
+.bg-white {
+    background-color: white !important;
+}
+
+.text-white {
+    color: white !important;
+}
+
+.bg-orange-darker{
+    background-color: #F0452D;
+}
+
+.rounded-3 {
+    border-radius: 15px !important;
+}
+
+.border-dark {
+    border: 1px solid black !important;
+}
+
+.text-warning {
+    color: #F0AE2D !important;
+}
+
+.text-success {
+    color: green !important;
+}
+
+.text-danger {
+    color: red !important;
+}
+
+.fw-medium {
+    font-weight: 500 !important;
+}

@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+
+<div class="d-flex align-items-center justify-content-center content-page">
+  <div class="container">
+    <div class="btn-container">
+      <button type="button" class="btn btn-primary">Cadastrar Voo</button>
+    </div>
+    <div>
+      <h1>Próximos voos:</h1>
+    </div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Horário voo</th>
+          <th scope="col">Origem</th>
+          <th scope="col">Destino</th>
+          <th scope="col">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let flight of listFlight">
+          <td>{{flight.dateDeparture}}</td>
+          <td>{{flight.departureAirport}}</td>
+          <td>{{flight.destinationAirport}}</td>
+          <td>
+            <button type="button" class="btn btn-success">Realizar</button>
+            <button type="button" class="btn btn-primary">Embarcar</button>
+            <button type="button" class="btn btn-danger">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

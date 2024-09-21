@@ -1,9 +1,9 @@
-export enum authenticationType {
+export enum AuthenticationType {
     EMPLOYEE = 1,
     CUSTOMER = 2
 }
 
-export class authentication {
+export class Authentication {
     login?: string;
     password?: string;
     type?: string

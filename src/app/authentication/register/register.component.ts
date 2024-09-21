@@ -1,15 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
-import { Customer } from '../../../shared/models/customer.model';
+import { Customer } from '../../../shared/models/Customer.model';
 import { Router } from '@angular/router';
-import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
-import { Address } from '../../../shared/models/address.model';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Address } from '../../../shared/models/Address.model';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-register',
   standalone: true,
   imports: [
-    //ReactiveFormsModule,
     FormsModule,
     NgIf
   ],

@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { authentication } from '../../../shared/models/authentication.model';
+import { Authentication } from '../../../shared/models/Authentication.model';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -16,7 +16,7 @@ import { NgIf } from '@angular/common';
 export class LoginComponent {
   @ViewChild('loginForm') loginForm!: NgForm
 
-  auth: authentication = new authentication()
+  auth: Authentication = new Authentication()
 
   public errorMessage = ''
 }

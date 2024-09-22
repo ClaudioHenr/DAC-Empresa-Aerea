@@ -1,6 +1,6 @@
 export class Flight {
     cod?: string;
-    dateDeparture?: string; // data/hora
+    dateDeparture?: Date; // data/hora
     departureAirport?: string;
     destinationAirport?: string;
     price?: number;

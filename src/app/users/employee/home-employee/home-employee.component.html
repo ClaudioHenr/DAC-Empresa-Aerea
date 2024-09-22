@@ -19,7 +19,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let flight of listFlight">
-          <td>{{flight.dateDeparture}}</td>
+          <td>{{flight.dateDeparture | date: 'dd/MM/yyyy HH:mm' }}</td>
           <td>{{flight.departureAirport}}</td>
           <td>{{flight.destinationAirport}}</td>
           <td>

@@ -6,6 +6,7 @@ import { ViewBookingComponent } from './users/customer/view-booking/view-booking
 import { HomeScreenComponent } from './users/customer/home-screen/home-screen.component';
 import { HomeEmployeeComponent } from './users/employee/home-employee/home-employee.component';
 import { ExtratoComponent } from './users/customer/extrato-milhas/extrato.component';
+import { FirstPageBookingComponent } from './users/customer/booking/first-page-booking/first-page-booking.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
     {
         path: 'extrato',
         component: ExtratoComponent
+    },
+    {
+        path: 'booking/first-page',
+        component: FirstPageBookingComponent
     }
 
 ];

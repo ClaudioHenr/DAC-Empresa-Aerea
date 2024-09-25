@@ -1,0 +1,83 @@
+<div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
+    <div class="w-100 h-10 bg-white d-flex align-items-center justify-content-center">
+        <h3 class="text-center">header aqui</h3>
+    </div>
+    <div class="w-100 h-90 padding-2">
+        <div class="bg-white w-100 h-100 rounded-3">
+            <div class="w-100 h-10">
+                <div class="d-flex justify-content-between align-items-center h-100 px-3">
+                    <div style="margin-top: 30px;">
+                        <div>
+                            <h3 class="m-0">Reserve agora a sua viagem!</h3>
+                        </div>
+                        <div>
+                            <span class="texto-subtitulo">Ao selecionar sua viagem é possível visualizar os detalhes.</span>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column align-items-center mt-3">
+                        <div>
+                            <h4 class="m-0">Saldo de Milhas: <span class="text-orange m-0">10000</span></h4>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+
+            <div class="w-100 h-90 px-3" style="padding-top: 15px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <div class="d-flex justify-content-center" style="gap: 20px; margin-bottom: 20px;">
+                        <div>
+                            <input type="text" class="input-voa" placeholder="Aeroporto Origem">
+                        </div>
+                        <div>
+                            <input type="text" class="input-voa" placeholder="Aeroporto Destino">
+                        </div>
+                        <div>
+                            <button class="btn btn-success" style="padding: 10px; width: 200px;">Buscar</button>
+                        </div>
+                    </div>
+
+                    <div class="rounded border border-dark">
+                        <table class="table table-hover table-bordered m-0 border-dark">
+                            <thead class="align-middle text-center">
+                                <tr>
+                                    <th class="text-white bg-orange-darker">Data/Hora</th>
+                                    <th class="text-white bg-orange-darker">Aeroporto Origem</th>
+                                    <th class="text-white bg-orange-darker">Aeroporto Destino</th>
+                                    <th class="text-white bg-orange-darker">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="align-middle text-center">
+                                <tr>
+                                    <td>26/09/2024<br>13:55</td>
+                                    <td>CWB<br>Afonso Pena</td>
+                                    <td>GIG<br>Galeão</td>
+                                    <td><button class="btn btn-primary">Visualizar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>26/09/2024<br>13:55</td>
+                                    <td>CWB<br>Afonso Pena</td>
+                                    <td>GIG<br>Galeão</td>
+                                    <td><button class="btn btn-primary">Visualizar</button></td>
+                                </tr>
+                                <tr>
+                                    <td>26/09/2024<br>13:55</td>
+                                    <td>CWB<br>Afonso Pena</td>
+                                    <td>GIG<br>Galeão</td>
+                                    <td><button class="btn btn-primary">Visualizar</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            <div>
+                <div class="d-flex justify-content-center" style="padding-bottom: 15px;">
+                    <i class="fas fa-chevron-circle-right" [class]="currentScreen === 1 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+                    <i class="fas fa-chevron-circle-right mx-3" [class]="currentScreen === 2 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+                    <i class="fas fa-chevron-circle-right" [class]="currentScreen === 3 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

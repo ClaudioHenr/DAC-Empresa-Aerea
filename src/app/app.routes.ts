@@ -7,6 +7,8 @@ import { HomeScreenComponent } from './users/customer/home-screen/home-screen.co
 import { HomeEmployeeComponent } from './users/employee/home-employee/home-employee.component';
 import { ExtratoComponent } from './users/customer/extrato-milhas/extrato.component';
 import { FirstPageBookingComponent } from './users/customer/booking/first-page-booking/first-page-booking.component';
+import { SecondPageBookingComponent } from './users/customer/booking/second-page-booking/second-page-booking.component';
+
 
 export const routes: Routes = [
     {
@@ -40,6 +42,9 @@ export const routes: Routes = [
     {
         path: 'booking/first-page',
         component: FirstPageBookingComponent
+    },
+    {
+        path: 'booking/second-page',
+        component: SecondPageBookingComponent
     }
-
 ];

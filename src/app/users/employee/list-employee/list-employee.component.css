@@ -1,0 +1,94 @@
+.container {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    width: 80%;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f04e3e;
+    padding: 10px;
+  }
+  
+  .header h1 {
+    color: white;
+    margin: 0;
+  }
+  
+  .logout-button {
+    background-color: #f04e3e;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .menu {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f04e3e;
+    padding: 10px;
+  }
+  
+  .menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .main-content {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+  
+  .table-container {
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  thead {
+    background-color: #f04e3e;
+    color: white;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .add-employee-button {
+    margin-top: 20px;
+    text-align: right;
+  }
+  
+  .add-employee-button button {
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .edit-link {
+    color: blue;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  
+  .remove-link {
+    color: red;
+    text-decoration: none;
+  }
+  
+  .edit-link:hover, .remove-link:hover {
+    text-decoration: underline;
+  }

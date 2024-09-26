@@ -104,36 +104,6 @@
             </div>
         </div>
 
-        <!--state-->
-        <div class="form-group col-2">
-            <label>state</label>
-            <input type="text" class="form-control" placeholder="state" 
-            name="state"
-            [(ngModel)]="address.state"
-            #stateInput="ngModel"
-            required>
-            <div *ngIf="stateInput.invalid && (stateInput.dirty || stateInput.touched)" class="text-danger">
-                <div *ngIf="stateInput.errors?.['required']">
-                    state é obrigatório
-                </div>
-            </div>
-        </div>
-
-        <!--city-->
-        <div class="form-group col-4">
-            <label>city</label>
-            <input type="text" class="form-control" placeholder="city" 
-            name="city"
-            [(ngModel)]="address.city"
-            #cityInput="ngModel"
-            required>
-            <div *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)" class="text-danger">
-                <div *ngIf="cityInput.errors?.['required']">
-                    city é obrigatória
-                </div>
-            </div>
-        </div>
-
         <!--password-->
         <div class="form-group col-6">
             <label>password</label>

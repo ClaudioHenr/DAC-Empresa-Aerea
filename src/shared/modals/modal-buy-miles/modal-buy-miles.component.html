@@ -1,0 +1,15 @@
+<div class="modal">
+    <div class="modal-content">
+      <h2>Compra de Milhas</h2>
+      <p>Saldo atual: {{ saldoAtual }}</p>
+      <p>Valor(R$) por Milha: {{ valorPorMilha }}</p>
+      <div>
+        <label for="quantidade">Insira a quantidade:</label>
+        <input type="number" id="quantidade" [(ngModel)]="quantidade" (ngModelChange)="atualizarValorTotal()">
+      </div>
+      <p>Valor(R$) Total: {{ valorTotal }}</p>
+      <p>Saldo de Milhas após a compra: {{ saldoAtual + quantidade }}</p>
+      <button (click)="cancelarCompra()">Cancelar</button>
+      <button (click)="confirmarCompra()">Confirmar</button>
+    </div>
+  </div>

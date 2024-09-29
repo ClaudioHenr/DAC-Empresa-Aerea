@@ -6,5 +6,5 @@ export enum AuthenticationType {
 export class Authentication {
     login?: string;
     password?: string;
-    type?: string
+    role?: number
 }

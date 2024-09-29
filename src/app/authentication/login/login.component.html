@@ -32,9 +32,9 @@
                 </div>
 
                 <!--Entrar-->
-                <button type="button" class="btn btn-primary">Entrar</button>
+                <button type="button" class="btn btn-primary" (click)="authentication()">Entrar</button>
                 <!--Cadastrar-->
-                <a href="#" ><button type="button" class="btn btn-outline-secondary">Cadastrar</button></a>
+                <button type="button" class="btn btn-outline-secondary" [routerLink]="['/reg']">Cadastrar</button>
                 <div class="text-danger">
                     {{errorMessage}}
                 </div>

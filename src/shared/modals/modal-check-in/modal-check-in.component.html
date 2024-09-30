@@ -1,0 +1,18 @@
+<div class="modal" *ngIf="showModal">
+    <div class="modal-content">
+        <h2>Realizar Check-in</h2>
+        <p>Voos nas próximas 48h:</p>
+        <ul>
+            <li *ngFor="let flight of flights">
+                {{ flight.origin }} → {{ flight.destination }} - {{ flight.time }}
+            </li>
+        </ul>
+        <p>
+            Ao clicar em Check-in você confirma que tem ciência da data e horário do seu voo.
+        </p>
+        <div class="buttons">
+            <button (click)="closeModal()" class="btn-secondary">Voltar</button>
+            <button (click)="checkIn()" class="btn-primary">Check-in</button>
+        </div>
+    </div>
+</div>

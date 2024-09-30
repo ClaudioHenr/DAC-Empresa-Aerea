@@ -1,9 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { ReusableModalComponent } from "../base/reusable-modal/reusable-modal.component";
 
 @Component({
   selector: 'app-modal-buy-miles',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule,
+    ReusableModalComponent
+],
   templateUrl: './modal-buy-miles.component.html',
   styleUrl: './modal-buy-miles.component.css'
 })

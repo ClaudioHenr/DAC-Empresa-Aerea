@@ -3,7 +3,7 @@
         <h2>Cancelar a Reserva</h2>
         <p><strong>Origem/Destino:</strong> {{ reserva.origem }} → {{ reserva.destino }}</p>
         <p><strong>Data/Horário:</strong> {{ reserva.data | date:'dd/MM/yyyy' }} - {{ reserva.horario }}</p>
-        <p><strong>Valor(R$) Pago:</strong> {{ reserva.valorPago | currency:'BRL' }}</p>
+        <p><strong>Valor(R$) Pago:</strong> {{ reserva?.valorPago| currency:'BRL' }}</p>
         <p><strong>Milhas utilizadas:</strong> {{ reserva.milhas }}</p>
         <p><strong>Valor(R$) Total:</strong> {{ reserva.valorTotal | currency:'BRL' }}</p>
         <div class="buttons">

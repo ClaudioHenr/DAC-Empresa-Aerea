@@ -1,9 +1,13 @@
+import { NgFor, NgIf } from '@angular/common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-modal-check-in',
   standalone: true,
-  imports: [],
+  imports: [
+    NgIf,
+    NgFor
+  ],
   templateUrl: './modal-check-in.component.html',
   styleUrl: './modal-check-in.component.css'
 })

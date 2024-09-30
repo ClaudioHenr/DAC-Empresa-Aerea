@@ -1,5 +1,6 @@
-<div class="modal">
-    <div class="modal-content">
+<app-reusable-modal modalId="buyMilesModal" title="Comprar milhas">
+  <div>
+    <div>
       <h2>Compra de Milhas</h2>
       <p>Saldo atual: {{ saldoAtual }}</p>
       <p>Valor(R$) por Milha: {{ valorPorMilha }}</p>
@@ -13,3 +14,4 @@
       <button (click)="confirmarCompra()">Confirmar</button>
     </div>
   </div>
+</app-reusable-modal>

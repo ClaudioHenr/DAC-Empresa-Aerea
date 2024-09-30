@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 interface Reserva {
   origem: string;
@@ -13,7 +14,9 @@ interface Reserva {
 @Component({
   selector: 'app-modal-cancel-reserve',
   standalone: true,
-  imports: [],
+  imports: [
+    FormsModule
+  ],
   templateUrl: './modal-cancel-reserve.component.html',
   styleUrl: './modal-cancel-reserve.component.css'
 })

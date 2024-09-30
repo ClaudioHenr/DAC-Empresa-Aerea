@@ -13,4 +13,7 @@ import { CommonModule, NgFor } from '@angular/common';
   ],
   templateUrl: './list-employee.component.html',
   styleUrl: './list-employee.component.css'
-});
+})
+export class ListEmployeeComponent {
+
+}

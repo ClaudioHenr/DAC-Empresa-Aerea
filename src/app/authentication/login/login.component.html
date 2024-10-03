@@ -1,45 +1,49 @@
-<div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
-<div id="login" class="container">
-    <!--formulário login-->
-    <form class="row" action="" method="post">
-        <!--formulario-->
-        <div class="col" >
-            <!--Logo-->
-            <h1>Empresa Aérea</h1>
-                <!--Email-->
-                <label>Email</label>
-                <input type="email" class="form-control" placeholder="Email" 
-                name="email"
-                [(ngModel)]="auth.login"
-                #loginInput="ngModel"
-                required>
-                <div *ngIf="loginInput.touched" class="text-danger">
-                    <div *ngIf="loginInput.errors?.['required']">
-                        Login é obrigatório
-                    </div>
-                </div>
-                <!--Senha-->
-                <label>Senha</label>
-                <input type="password" class="form-control" placeholder="Senha" 
-                name="senha"
-                [(ngModel)]="auth.password"
-                #senhaInput="ngModel"
-                required>
-                <div *ngIf="senhaInput.touched" class="text-danger">
-                    <div *ngIf="senhaInput.errors?.['required']">
-                        Senha é obrigatória
-                    </div>
-                </div>
-
-                <!--Entrar-->
-                <button type="button" class="btn btn-primary" (click)="authentication()">Entrar</button>
-                <!--Cadastrar-->
-                <button type="button" class="btn btn-outline-secondary" [routerLink]="['/reg']">Cadastrar</button>
-                <div class="text-danger">
-                    {{errorMessage}}
-                </div>
-        </div>
-        
-    </form>
-</div>
-</div>
+<div class="layout">
+    <div class="login-container">
+        <!-- Coluna da imagem (esquerda) -->
+    <div class="login-left">
+        <img src="assets/passport_plane.jpg">
+      </div>
+    
+      <!-- Coluna do formulário (direita) -->
+      <div id="login" class="login-right">
+        <form class="row" action="" method="post">
+          <div class="col">
+            <!-- Título e descrição -->
+            <h1>Bem-Vindo ao <span class="brand-name">VoaTADS</span></h1>
+            <p>Aqui você encontra a viagem perfeita para todos os destinos!</p>
+    
+            <!-- Email -->
+            <label for="email">Email</label>
+            <input type="email" class="form-control" placeholder="Email" 
+                   id="email" name="email" 
+                   [(ngModel)]="auth.login" 
+                   #loginInput="ngModel" 
+                   required>
+            <div *ngIf="loginInput.touched && loginInput.errors" class="text-danger">
+              Email é obrigatório.
+            </div>
+    
+            <!-- Senha -->
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" placeholder="Senha" 
+                   id="senha" name="senha" 
+                   [(ngModel)]="auth.password" 
+                   #senhaInput="ngModel" 
+                   required>
+            <div *ngIf="senhaInput.touched && senhaInput.errors" class="text-danger">
+              Senha é obrigatória.
+            </div>
+    
+            <!-- Entrar -->
+            <button type="button" class="btn btn-primary" (click)="authentication()">Entrar</button>
+    
+            <!-- Cadastro -->
+            <p>Não possui conta? <a [routerLink]="['/autocadastro']" class="create-account-link">Crie Agora!</a></p>
+            
+          </div>
+        </form>
+    </div>
+    </div>
+  </div>
+  

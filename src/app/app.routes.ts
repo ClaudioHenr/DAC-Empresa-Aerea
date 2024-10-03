@@ -12,11 +12,11 @@ import { SecondPageBookingComponent } from './users/customer/booking/second-page
 
 export const routes: Routes = [
     {
-        path: 'reg',
+        path: 'autocadastro',
         component: RegisterComponent
     },
     {
-        path: 'l',
+        path: 'login',
         component: LoginComponent
     },
     {

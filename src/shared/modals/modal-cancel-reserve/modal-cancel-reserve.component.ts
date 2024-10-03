@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReusableModalComponent } from "../base/reusable-modal/reusable-modal.component";
 
 interface Reserva {
   origem: string;
@@ -15,15 +16,23 @@ interface Reserva {
   selector: 'app-modal-cancel-reserve',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    ReusableModalComponent
   ],
   templateUrl: './modal-cancel-reserve.component.html',
   styleUrl: './modal-cancel-reserve.component.css'
 })
 
 export class ModalCancelReserveComponent {
-//  @Input() reserva: Reserva;
   @Input() showModal: boolean = false;
+  @Input()
+  flight!: {
+    origin: string;
+    destination: string;
+    time: string;
+    data:Date;
+    price:number;
+  };
   @Output() cancelado = new EventEmitter<void>();
 
   confirmarCancelamento() {

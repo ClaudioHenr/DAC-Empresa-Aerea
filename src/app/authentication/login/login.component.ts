@@ -20,18 +20,25 @@ export class LoginComponent {
   @ViewChild('loginForm') loginForm!: NgForm
 
   auth: Authentication = new Authentication()
+  
+  public errorMessage = ''
 
   constructor( private loginService: LoginService, private router: Router ) {}
 
-  public errorMessage = ''
-
   async authentication() {
-    const result = await this.loginService.login(this.auth.login, this.auth.password)
-    this.handleLogin(result)
+    try {
+      const result = await this.loginService.login(this.auth)
+      this.handleLogin(result) 
+    } catch (error: any) {
+      if (error.response.status === 401) {
+        console.error("Erro ao logar: ", error.response.data.message)
+        this.errorMessage = error.response.data.message
+      }
+    }
   }
 
   handleLogin(result: any) {
-    const roleUser: number = result.data.login.roleUser
+    const roleUser: number = result.data.auth.role
     if (roleUser == AuthenticationType.EMPLOYEE) {
       console.log("it is a employee")
       this.router.navigate(['/eh'])

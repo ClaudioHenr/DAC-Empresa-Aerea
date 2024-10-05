@@ -13,11 +13,11 @@ import { CheckBookingComponent } from './users/customer/check-booking/check-book
 
 export const routes: Routes = [
     {
-        path: 'reg',
+        path: 'autocadastro',
         component: RegisterComponent
     },
     {
-        path: 'l',
+        path: 'login',
         component: LoginComponent
     },
     {

@@ -1,14 +1,16 @@
-<div class="modal" *ngIf="showModal">
-    <div class="modal-content">
-        <h2>Cancelar a Reserva</h2>
-        <p><strong>Origem/Destino:</strong> {{ reserva.origem }} → {{ reserva.destino }}</p>
-        <p><strong>Data/Horário:</strong> {{ reserva.data | date:'dd/MM/yyyy' }} - {{ reserva.horario }}</p>
-        <p><strong>Valor(R$) Pago:</strong> {{ reserva?.valorPago| currency:'BRL' }}</p>
-        <p><strong>Milhas utilizadas:</strong> {{ reserva.milhas }}</p>
-        <p><strong>Valor(R$) Total:</strong> {{ reserva.valorTotal | currency:'BRL' }}</p>
-        <div class="buttons">
-            <button class="btn btn-secondary" (click)="showModal = false">Voltar</button>
-            <button class="btn btn-danger" (click)="confirmarCancelamento()">Confirmar</button>
+<app-reusable-modal modalId="cancelReserveModal" title="Cancelar Reserva">
+    <div class="modal" *ngIf="showModal">
+        <div class="modal-content">
+            <h2>Cancelar a Reserva</h2>
+            <p><strong>Origem/Destino:</strong> {{ flight.origin }} → {{ flight.destination }}</p>
+            <p><strong>Data/Horário:</strong> {{ flight.data}} - {{ flight.time }}</p>
+            <!-- <p><strong>Valor(R$) Pago:</strong> {{}}</p> -->
+            <!-- <p><strong>Milhas utilizadas:</strong> {{}}</p> -->
+            <p><strong>Valor(R$) Total:</strong> {{ flight.price}}</p>
+            <div class="buttons">
+                <button class="btn btn-secondary" (click)="showModal = false">Voltar</button>
+                <button class="btn btn-danger" (click)="confirmarCancelamento()">Confirmar</button>
+            </div>
         </div>
     </div>
-</div>
+</app-reusable-modal>

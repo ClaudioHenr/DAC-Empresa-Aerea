@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { Customer } from '../../../shared/models/Customer.model';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Address } from '../../../shared/models/Address.model';
 import { NgIf } from '@angular/common';
@@ -11,7 +11,8 @@ import { RegisterService } from './services/register.service';
   standalone: true,
   imports: [
     FormsModule,
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'

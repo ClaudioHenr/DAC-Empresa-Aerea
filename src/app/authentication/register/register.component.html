@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
 <div id="cadastro">
 
-    <h1>Empresa Aérea</h1>
+    <h1>VoaTads</h1>
     <!--Titulo-->
     <h2>Cadastro</h2>
 
@@ -62,11 +62,11 @@
         
 
         <!--Rua-->
-        <div class="form-group col-6">
+        <div class="form-group col-6" *ngIf="customer.address">
             <label>Rua</label>
             <input type="text" class="form-control" placeholder="Rua" 
             name="street"
-            [(ngModel)]="address.street"
+            [(ngModel)]="customer.address.street"
             #streetInput="ngModel"
             required>
             <div *ngIf="streetInput.invalid && (streetInput.dirty || streetInput.touched)" class="text-danger">
@@ -77,20 +77,20 @@
         </div>
 
         <!--Complement-->
-        <div class="form-group col-6">
+        <div class="form-group col-6" *ngIf="customer.address">
             <label>Complemento</label>
             <input type="text" class="form-control" placeholder="Complemento" 
             name="complement"
-            [(ngModel)]="address.complement"
+            [(ngModel)]="customer.address.complement"
             required>
         </div>
 
         <!--CEP-->
-        <div class="form-group col-6">
+        <div class="form-group col-6" *ngIf="customer.address">
             <label>CEP</label>
             <input type="text" class="form-control" placeholder="CEP" 
             name="cep"
-            [(ngModel)]="address.CEP"
+            [(ngModel)]="customer.address.CEP"
             #cepInput="ngModel"
             pattern="\d{5}\d{3}"
             required>
@@ -118,10 +118,14 @@
                 </div>
             </div>
         </div>
+        
+        <div class="text-danger">
+            {{errorMessage}}
+        </div>
 
         <!--Cadastrar-->
         <div class="form-group col-2">    
-            <button type="button" class="btn btn-primary" >Cadastrar</button>
+            <button type="button" class="btn btn-primary" (click)="register()">Cadastrar</button>
         </div>
         
         <!--Cancelar-->

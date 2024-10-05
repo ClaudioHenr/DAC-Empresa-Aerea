@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import axios from 'axios';
+import { Authentication } from '../../../../shared/models/Authentication.model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +10,14 @@ export class LoginService {
 
   constructor() { }
 
-  login(login: string | undefined, password: string | undefined) {
-    const data = {login, password}
-    const result = axios.post(this.url, data)
-    console.log("RESULT SERVICE:", result)
-    return result
+  login(auth: Authentication) {
+    try {
+      const result = axios.post(this.url, auth)
+      console.log("RESULT SERVICE:", result)
+      return result 
+    } catch (error) {
+      console.error("Erro ao fazer login: ", error)
+      throw error
+    }
   }
 }

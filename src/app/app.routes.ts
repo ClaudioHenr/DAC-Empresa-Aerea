@@ -8,7 +8,8 @@ import { HomeEmployeeComponent } from './users/employee/home-employee/home-emplo
 import { ExtratoComponent } from './users/customer/extrato-milhas/extrato.component';
 import { FirstPageBookingComponent } from './users/customer/booking/first-page-booking/first-page-booking.component';
 import { SecondPageBookingComponent } from './users/customer/booking/second-page-booking/second-page-booking.component';
-
+import { LastPageBookingComponent } from './users/customer/booking/last-page-booking/last-page-booking.component';
+import { CheckBookingComponent } from './users/customer/check-booking/check-booking.component';
 
 export const routes: Routes = [
     {
@@ -46,5 +47,14 @@ export const routes: Routes = [
     {
         path: 'booking/second-page',
         component: SecondPageBookingComponent
+    },
+    {
+        path: 'booking/last-page',
+        component: LastPageBookingComponent
+    },
+    {
+        path: 'check-booking',
+        component: CheckBookingComponent
     }
+
 ];

@@ -1,0 +1,71 @@
+<div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
+    <div class="w-100 h-10 bg-white d-flex align-items-center justify-content-center">
+        <h3 class="text-center">header aqui</h3>
+    </div>
+    <div class="w-100 h-90 padding-2">
+        <div class="bg-white w-100 h-100 rounded-3">
+
+            <div class="w-100 h-100 px-3" style="padding-top: 15px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div class="d-flex justify-content-between align-items-center h-100 px-3" style="flex-direction: column;">
+                    <div style="margin-top: 30px; width: 100%;">
+                        <div *ngIf="isOrderSuccessful; else errorTitulo">
+                            <h3 class="m-0">Pedido finalizado!</h3>
+                        </div>
+                        <ng-template #errorTitulo>
+                            <h3 class="m-0">Falha no pedido!</h3>
+                        </ng-template>
+
+                        <div *ngIf="isOrderSuccessful; else errorTemplate">
+                            <span class="texto-subtitulo">Parabéns, sua passagem foi reservada! Guarde seu código de reserva.</span>
+                        </div>
+
+                        <ng-template #errorTemplate>
+                            <div>
+                                <span class="texto-subtitulo">Houve um erro ao processar seu pedido. Por favor, tente novamente.</span>
+                                <div>
+                                </div>
+                            </div>  
+                        </ng-template>
+                    </div>
+
+                    <div *ngIf="isOrderSuccessful; else errorBody">
+                        <div style="width: 100%; display: flex; justify-content: center; align-items: center; height: 100%; flex-direction: column; gap: 20px; margin-top: -70px;">
+                            <div style="align-items: center; text-align: center;">
+                                <h3 class="m-0" style="font-size: 40px;">Seu código de reserva:</h3>
+                                <h3 class="m-0 text-orange" style="font-size: 40px;">#AAA333</h3>
+                            </div>
+
+                            <i class="fas fa-check-circle text-success" style="font-size: 300px;"></i>
+
+                            <div style="margin-top: 25px;">
+                                <button class="btn btn-success" style="width: 200px; height: 60px;" [routerLink]="['/home']">Página Inicial</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ng-template #errorBody>
+                        <div style="width: 100%; display: flex; justify-content: center; align-items: center; height: 100%; flex-direction: column; gap: 20px; margin-top: -70px;">
+                            <div style="align-items: center; text-align: center;">
+                                <h3 class="m-0" style="font-size: 40px;">Não foi possivel concluir seu pedido.</h3>
+                            </div>
+
+                            <i class="fas fa-times-circle text-danger" style="font-size: 300px;"></i>
+
+                            <div style="margin-top: 25px;">
+                                <button class="btn btn-danger" style="width: 200px; height: 60px;" [routerLink]="['/booking/second-page']">Voltar para a tela anterior</button>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
+            <div>
+                <div class="d-flex justify-content-center" style="padding-bottom: 15px;">
+                    <i class="fas fa-chevron-circle-right" [class]="currentScreen === 1 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+                    <i class="fas fa-chevron-circle-right mx-3" [class]="currentScreen === 2 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+                    <i class="fas fa-chevron-circle-right" [class]="currentScreen === 3 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+

@@ -11,6 +11,7 @@ import { SecondPageBookingComponent } from './users/customer/booking/second-page
 import { LastPageBookingComponent } from './users/customer/booking/last-page-booking/last-page-booking.component';
 import { CheckBookingComponent } from './users/customer/check-booking/check-booking.component';
 import { ListEmployeeComponent } from './users/employee/list-employee/list-employee.component';
+import { CreateFlightComponent } from './users/employee/create-flight/create-flight.component';
 
 export const routes: Routes = [
     {
@@ -60,6 +61,10 @@ export const routes: Routes = [
     {
         path: 'check-booking',
         component: CheckBookingComponent
+    },
+    {
+        path: 'create-flight',
+        component: CreateFlightComponent
     }
 
 ];

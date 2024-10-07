@@ -1,0 +1,12 @@
+<app-reusable-modal modalId="boardingModal" title="Embarque de passageiro">
+  <div>
+    <div>
+      <p>Digite o código de embarque do passageiro:</p>
+      <input type="text" placeholder="#AAA1111" class="boarding-input" />
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmBoarding()">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</app-reusable-modal>

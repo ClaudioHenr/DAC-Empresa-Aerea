@@ -1,0 +1,61 @@
+<app-reusable-modal modalId="updateEmployeeModal" title="Atualizar dados de funcionário">
+    <div>
+        <div>
+            <p>Atualize os campos e confirme</p>
+            <div>
+                <form class="row" action="" method="post">
+                    <div class="col"> 
+                      <!-- Nome -->
+                      <label for="name">Nome</label>
+                      <input type="text" class="form-control" placeholder="Nome" 
+                              id="name" name="name" 
+                              [(ngModel)]="employee.name" 
+                              #nameInput="ngModel" 
+                              required>
+                      <div *ngIf="nameInput.touched && nameInput.errors" class="text-danger">
+                        Nome é obrigatório.
+                      </div>
+              
+                      <!-- CPF -->
+                      <label for="cpf">CPF</label>
+                      <input type="text" class="form-control" placeholder="CPF" 
+                              id="cpf" name="cpf" 
+                              [(ngModel)]="employee.cpf" 
+                              #cpfInput="ngModel" 
+                              required>
+                      <div *ngIf="cpfInput.touched && cpfInput.errors" class="text-danger">
+                        CPF é obrigatório.
+                      </div>
+
+                      <!-- Email -->
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" placeholder="Email" 
+                              id="email" name="email" 
+                              [(ngModel)]="employee.email" 
+                              #loginInput="ngModel" 
+                              required>
+                      <div *ngIf="loginInput.touched && loginInput.errors" class="text-danger">
+                        Email é obrigatório.
+                      </div>
+
+                      <!-- Telefone -->
+                      <label for="phone">Telefone</label>
+                      <input type="text" class="form-control" placeholder="Telefone" 
+                              id="phone" name="phone" 
+                              [(ngModel)]="employee.phone" 
+                              #phoneInput="ngModel" 
+                              required>
+                      <div *ngIf="phoneInput.touched && phoneInput.errors" class="text-danger">
+                        Telefone é obrigatório.
+                      </div>                      
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-primary" (click)="updateEmployee()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</app-reusable-modal>
+  

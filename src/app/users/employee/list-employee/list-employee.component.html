@@ -1,5 +1,9 @@
 <app-navbar></app-navbar>
-
+<!--Modais-->
+<app-modal-insert-employee></app-modal-insert-employee>
+<app-modal-update-employee></app-modal-update-employee>
+<app-modal-delete-employee></app-modal-delete-employee>
+<!--Template principal-->
 <div class="container">
   <div class="header">
     <h1>VoaTADS</h1>
@@ -33,8 +37,8 @@
             <td><a href="mailto:triplogamer.gmail.com">triplogamer.gmail.com</a></td>
             <td>(41) 9 9999-9999</td>
             <td>
-              <a href="#" class="edit-link">Editar</a>
-              <a href="#" class="remove-link">Remover</a>
+              <a href="#" class="edit-link" data-bs-toggle="modal" data-bs-target="#updateEmployeeModal">Editar</a>
+              <a href="#" class="remove-link" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal">Remover</a>
             </td>
           </tr>
         </tbody>
@@ -42,7 +46,7 @@
     </div>
 
     <div class="add-employee-button">
-      <button>Inserir</button>
+      <button data-bs-toggle="modal" data-bs-target="#registerEmployeeModal">Inserir</button>
     </div>
   </div>
 </div>

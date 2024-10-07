@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ReusableModalComponent } from "../base/reusable-modal/reusable-modal.component";
+import { ReusableModalComponent } from "../../../../../shared/modals/base/reusable-modal/reusable-modal.component";
+import { NgIf } from '@angular/common';
 
 interface Reserva {
   origem: string;
@@ -16,6 +17,7 @@ interface Reserva {
   selector: 'app-modal-cancel-reserve',
   standalone: true,
   imports: [
+    NgIf,
     FormsModule,
     ReusableModalComponent
   ],
@@ -33,11 +35,11 @@ export class ModalCancelReserveComponent {
     data:Date;
     price:number;
   };
-  @Output() cancelado = new EventEmitter<void>();
+  // @Output() cancelado = new EventEmitter<void>();
 
   confirmarCancelamento() {
-    this.cancelado.emit();
-    this.showModal = false;
+    // this.cancelado.emit();
+    // this.showModal = false;
   }
   
 }

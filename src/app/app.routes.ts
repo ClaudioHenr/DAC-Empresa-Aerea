@@ -10,6 +10,7 @@ import { FirstPageBookingComponent } from './users/customer/booking/first-page-b
 import { SecondPageBookingComponent } from './users/customer/booking/second-page-booking/second-page-booking.component';
 import { LastPageBookingComponent } from './users/customer/booking/last-page-booking/last-page-booking.component';
 import { CheckBookingComponent } from './users/customer/check-booking/check-booking.component';
+import { ListEmployeeComponent } from './users/employee/list-employee/list-employee.component';
 
 export const routes: Routes = [
     {
@@ -35,6 +36,10 @@ export const routes: Routes = [
     {
         path: 'eh',
         component: HomeEmployeeComponent
+    },
+    {
+        path: 'list-employee',
+        component: ListEmployeeComponent
     },
     {
         path: 'extrato',

@@ -1,7 +1,6 @@
 <app-reusable-modal modalId="buyMilesModal" title="Comprar milhas">
   <div>
     <div>
-      <h2>Compra de Milhas</h2>
       <p>Saldo atual: {{ saldoAtual }}</p>
       <p>Valor(R$) por Milha: {{ valorPorMilha }}</p>
       <div>
@@ -10,8 +9,10 @@
       </div>
       <p>Valor(R$) Total: {{ valorTotal }}</p>
       <p>Saldo de Milhas após a compra: {{ saldoAtual + quantidade }}</p>
-      <button (click)="cancelarCompra()">Cancelar</button>
-      <button (click)="confirmarCompra()">Confirmar</button>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmarCompra()">Confirmar</button>
+      </div>
     </div>
   </div>
 </app-reusable-modal>

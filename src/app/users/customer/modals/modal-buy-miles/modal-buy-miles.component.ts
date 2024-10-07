@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ReusableModalComponent } from "../base/reusable-modal/reusable-modal.component";
+import { ReusableModalComponent } from '../../../../../shared/modals/base/reusable-modal/reusable-modal.component';
 
 @Component({
   selector: 'app-modal-buy-miles',
@@ -14,8 +14,6 @@ import { ReusableModalComponent } from "../base/reusable-modal/reusable-modal.co
 })
 
 export class ModalBuyMilesComponent implements OnInit {
-
-  @Input() showModal: boolean = false;
 
   saldoAtual: number = 10000;
   valorPorMilha: number = 5.00;
@@ -37,10 +35,6 @@ export class ModalBuyMilesComponent implements OnInit {
 
   confirmarCompra(): void {
 
-  }
-
-  cancelarCompra() {
-    this.showModal = false;
   }
 
 }

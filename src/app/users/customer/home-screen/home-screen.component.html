@@ -1,5 +1,6 @@
 <!--Modais-->
 <app-modal-buy-miles></app-modal-buy-miles>
+<app-modal-cancel-reserve></app-modal-cancel-reserve>
 
 <!--Template principal da tela-->
 <div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
@@ -17,6 +18,7 @@
                         <div>
                             <h4 class="m-0">Saldo de Milhas: <span class="text-orange m-0">10000</span></h4>
                         </div>
+                        <!--Acionar modal buy miles-->
                         <div>
                             <a href="#" class="btn btn-orange text-white h-25 px-3" data-bs-toggle="modal" data-bs-target="#buyMilesModal">Comprar Milhas</a>
                         </div>
@@ -38,43 +40,14 @@
                             </tr>
                         </thead>
                         <tbody class="align-middle text-center">
-                            <tr>
-                                <td>26/09/2024<br>13:55</td>
-                                <td>CWB<br>Afonso Pena</td>
-                                <td>GIG<br>Galeão</td>
+                            <tr *ngFor="let flight of listFlight">
+                                <td>{{flight.dateDeparture | date: 'dd/MM/yyyy HH:mm' }}</td>
+                                <td>{{flight.departureAirport}}</td>
+                                <td>{{flight.destinationAirport}}</td>
                                 <td class="text-primary fw-medium">Visualizar
                                     <br>
-                                    <span class="text-danger fw-medium">Cancelar</span>
-                                </td>
-                                <td class="text-warning fw-medium">Reservado
-                                    <br>
-                                    <span class="text-success fw-medium">Realizado</span>
-                                    <br>
-                                    <span class="text-danger fw-medium">Cancelado</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>26/09/2024<br>13:55</td>
-                                <td>CWB<br>Afonso Pena</td>
-                                <td>GIG<br>Galeão</td>
-                                <td class="text-primary fw-medium">Visualizar
-                                    <br>
-                                    <span class="text-danger fw-medium">Cancelar</span>
-                                </td>
-                                <td class="text-warning fw-medium">Reservado
-                                    <br>
-                                    <span class="text-success fw-medium">Realizado</span>
-                                    <br>
-                                    <span class="text-danger fw-medium">Cancelado</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>26/09/2024<br>13:55</td>
-                                <td>CWB<br>Afonso Pena</td>
-                                <td>GIG<br>Galeão</td>
-                                <td class="text-primary fw-medium">Visualizar
-                                    <br>
-                                    <span class="text-danger fw-medium">Cancelar</span>
+                                    <!--Acionar modal cancel reserve-->
+                                    <span class="text-danger fw-medium" data-bs-toggle="modal" data-bs-target="#cancelReserveModal">Cancelar</span>
                                 </td>
                                 <td class="text-warning fw-medium">Reservado
                                     <br>

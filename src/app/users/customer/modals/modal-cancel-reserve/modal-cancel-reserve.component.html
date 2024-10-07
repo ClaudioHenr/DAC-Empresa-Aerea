@@ -1,0 +1,16 @@
+<app-reusable-modal modalId="cancelReserveModal" title="Cancelar Reserva">
+    <div>
+        <div>
+            <!-- <p><strong>Origem/Destino:</strong> {{ flight.origin }} → {{ flight.destination }}</p> -->
+            <!-- <p><strong>Data/Horário:</strong> {{ flight.data}} - {{ flight.time }}</p> -->
+            <!-- <p><strong>Valor(R$) Total:</strong> {{ flight.price}}</p> -->
+            <p><strong>Origem/Destino:</strong>  flight.origin  →  flight.destination </p>
+            <p><strong>Data/Horário:</strong>  flight.data -  flight.time </p>
+            <p><strong>Valor(R$) Total:</strong>  flight.price</p>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-primary" (click)="confirmarCancelamento()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</app-reusable-modal>

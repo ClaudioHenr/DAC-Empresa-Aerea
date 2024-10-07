@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from "../../../layout/navbar/navbar.component";
 import { Flight } from '../../../../shared/models/Flight.model';
 import { CommonModule, NgFor } from '@angular/common';
+import { BoardingModalComponent } from "../modals/boarding-modal/boarding-modal.component";
+import { ModalConfirmFlightComponent } from "../modals/modal-confirm-flight/modal-confirm-flight.component";
+import { ModalCancelFlightComponent } from "../modals/modal-cancel-flight/modal-cancel-flight.component";
 
 @Component({
   selector: 'app-home-employee',
@@ -9,8 +12,11 @@ import { CommonModule, NgFor } from '@angular/common';
   imports: [
     NavbarComponent,
     NgFor,
-    CommonModule
-  ],
+    CommonModule,
+    BoardingModalComponent,
+    ModalConfirmFlightComponent,
+    ModalCancelFlightComponent
+],
   templateUrl: './home-employee.component.html',
   styleUrl: './home-employee.component.css'
 })

@@ -1,34 +1,59 @@
 <app-navbar></app-navbar>
+<!--Modai-->
+<app-boarding-modal></app-boarding-modal>
+<app-modal-confirm-flight></app-modal-confirm-flight>
+<app-modal-cancel-flight></app-modal-cancel-flight>
+<!--Template principal da tela-->
+<div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
+  <div class="w-100 h-10 bg-white d-flex align-items-center justify-content-center">
+      <h3 class="text-center">header aqui</h3>
+  </div>
+  <div class="w-100 h-90 padding-2">
+      <div class="bg-white w-100 h-100 rounded-3">
+          <div class="w-100 h-10">
+              <div class="d-flex justify-content-between align-items-center h-100 px-3">
+                  <div>
+                      <h3 class="m-0">Olá! <span class="text-orange m-0">Razer Montano</span></h3>
+                  </div>
+                  <div class="d-flex flex-column align-items-center mt-3">
+                      <div>
+                          <h4 class="m-0">Saldo de Milhas: <span class="text-orange m-0">10000</span></h4>
+                      </div>
+                      <!--Ir para tela de cadastro de voo-->
+                      <div>
+                          <a href="#" class="btn btn-orange text-white h-25 px-3">Cadastrar Voo</a>
+                      </div>
+                  </div>    
+              </div>
+          </div>
 
-<div class="d-flex align-items-center justify-content-center content-page">
-  <div class="container">
-    <div class="btn-container">
-      <button type="button" class="btn btn-primary">Cadastrar Voo</button>
-    </div>
-    <div>
-      <h1>Próximos voos:</h1>
-    </div>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th scope="col">Horário voo</th>
-          <th scope="col">Origem</th>
-          <th scope="col">Destino</th>
-          <th scope="col">Ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let flight of listFlight">
-          <td>{{flight.dateDeparture | date: 'dd/MM/yyyy HH:mm' }}</td>
-          <td>{{flight.departureAirport}}</td>
-          <td>{{flight.destinationAirport}}</td>
-          <td>
-            <button type="button" class="btn btn-success">Realizar</button>
-            <button type="button" class="btn btn-primary">Embarcar</button>
-            <button type="button" class="btn btn-danger">Cancelar</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+          <div class="w-100 h-90 px-3">
+              <h3 class="m-0">Próximos voos:</h3>
+              <div class="rounded border border-dark">
+                  <table class="table table-hover table-bordered m-0 border-dark">
+                      <thead class="align-middle text-center">
+                          <tr>
+                              <th class="text-white bg-orange-darker">Data/Hora</th>                                
+                              <th class="text-white bg-orange-darker">Origem</th>
+                              <th class="text-white bg-orange-darker">Destino</th>
+                              <th class="text-white bg-orange-darker">Ações</th>                                
+                          </tr>
+                      </thead>
+                      <tbody class="align-middle text-center">
+                          <tr *ngFor="let flight of listFlight">
+                              <td>{{flight.dateDeparture | date: 'dd/MM/yyyy HH:mm' }}</td>
+                              <td>{{flight.departureAirport}}</td>
+                              <td>{{flight.destinationAirport}}</td>
+                              <td>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#confirmFlightModal">Realizar</button>
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#boardingModal">Embarcar</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#cancelFlightModal">Cancelar</button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
   </div>
 </div>

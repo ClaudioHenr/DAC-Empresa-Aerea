@@ -1,0 +1,21 @@
+.navbar{
+    height: 100px;
+}
+
+.navbar-brand {
+    padding-left: 50px;
+    font-size: 2em;
+    font-weight: 900;
+    color: #f04e3e;
+}
+
+.nav-item {
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.btn {
+    background-color: #f04e3e;
+    color: white;
+    margin-left: 250px;
+}

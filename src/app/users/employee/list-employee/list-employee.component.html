@@ -4,49 +4,42 @@
 <app-modal-update-employee></app-modal-update-employee>
 <app-modal-delete-employee></app-modal-delete-employee>
 <!--Template principal-->
-<div class="container">
-  <div class="header">
-    <h1>VoaTADS</h1>
-    <button class="logout-button">Logout</button>
-  </div>
+<div class="body">
+  <div class="container">
+    <div class="main-content">
+      <div class="header-section">
+        <h2>Lista de Funcionários</h2>
 
-  <div class="menu">
-    <a href="#">Menu Inicial</a>
-    <a href="#">Cadastro de Voo</a>
-    <a href="#">Funcionários</a>
-  </div>
-
-  <div class="main-content">
-    <h2>Lista de Funcionários</h2>
-
-    <div class="table-container">
-      <table>
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>CPF</th>
-            <th>Email</th>
-            <th>Telefone</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Guilherme Franco Batista</td>
-            <td>111.111.111-11</td>
-            <td><a href="mailto:triplogamer.gmail.com">triplogamer.gmail.com</a></td>
-            <td>(41) 9 9999-9999</td>
-            <td>
-              <a href="#" class="edit-link" data-bs-toggle="modal" data-bs-target="#updateEmployeeModal">Editar</a>
-              <a href="#" class="remove-link" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal">Remover</a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="add-employee-button">
-      <button data-bs-toggle="modal" data-bs-target="#registerEmployeeModal">Inserir</button>
+        <div class="add-employee-button">
+          <button data-bs-toggle="modal" data-bs-target="#registerEmployeeModal">Inserir</button>
+        </div>
+      </div>
+  
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>CPF</th>
+              <th>Email</th>
+              <th>Telefone</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let employee of employees">
+              <td>{{ employee.nome }}</td>
+              <td>{{ employee.cpf }}</td>
+              <td><a class="mail" href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
+              <td>{{ employee.telefone }}</td>
+              <td>
+                <button class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#updateEmployeeModal" type="submit">Editar</button>
+                <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal" type="submit">Remover</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

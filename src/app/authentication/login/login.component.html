@@ -1,13 +1,13 @@
 <div class="layout">
-  <div class="login-container">
+  <div class="login-container" style="height: 100vh;">
+    <div class="content-login-container">
       <!-- Coluna da imagem (esquerda) -->
-  <div class="login-left">
+    <div class="login-left">
       <img src="assets/passport_plane.jpg">
     </div>
-  
     <!-- Coluna do formulário (direita) -->
     <div id="login" class="login-right">
-      <h1>Bem-Vindo ao <span class="brand-name">VoaTADS</span></h1>
+      <h1>Bem-vindo ao <span class="brand-name">VoaTADS</span></h1>
       <p>Aqui você encontra a viagem perfeita para todos os destinos!</p>
       <form class="row" action="" method="post">
         <div class="col"> 
@@ -21,7 +21,7 @@
           <div *ngIf="loginInput.touched && loginInput.errors" class="text-danger">
             Email é obrigatório.
           </div>
-  
+
           <!-- Senha -->
           <label for="senha">Senha</label>
           <input type="password" class="form-control" placeholder="Senha" 
@@ -32,15 +32,18 @@
           <div *ngIf="senhaInput.touched && senhaInput.errors" class="text-danger">
             Senha é obrigatória.
           </div>
-  
+
           <!-- Entrar -->
           <button type="button" class="btn btn-primary" (click)="authentication()">Entrar</button>
-  
+
           <!-- Cadastro -->
           <p>Não possui conta? <a [routerLink]="['/autocadastro']" class="create-account-link">Crie Agora!</a></p>
           
         </div>
       </form>
-  </div>
+    </div>
+
+    </div>
+
   </div>
 </div>

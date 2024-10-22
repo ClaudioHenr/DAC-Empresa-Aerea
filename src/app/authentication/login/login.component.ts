@@ -4,6 +4,7 @@ import { Authentication, AuthenticationType } from '../../../shared/models/Authe
 import { NgIf } from '@angular/common';
 import { LoginService } from './services/login.service';
 import { Router, RouterLink } from '@angular/router';
+import { NavbarComponent } from "../../layout/navbar/navbar.component";
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,9 @@ import { Router, RouterLink } from '@angular/router';
   imports: [
     FormsModule,
     NgIf,
-    RouterLink
-  ],
+    RouterLink,
+    NavbarComponent
+],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+    <a class="navbar-brand mx-auto" [routerLink]="['/home-employee']">VoaTADS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!--Cliente-->
+      <ul class="navbar-nav me-auto mx-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['']">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['']">Reservas</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['']">Fazer reserva</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['']">Check-in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['']">Extrato de Milhas</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" [routerLink]="['']">Logout</button>
+      </form>
+    </div>
+  </div>
+  </nav>

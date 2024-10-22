@@ -15,36 +15,20 @@ import { CreateFlightComponent } from './users/employee/create-flight/create-fli
 
 export const routes: Routes = [
     {
-        path: 'autocadastro',
-        component: RegisterComponent
-    },
-    {
         path: 'login',
         component: LoginComponent
-    },
+    },    
     {
-        path: 't',
-        component: TesteComponent
-    },
-    {
-        path: 'view-booking',
-        component: ViewBookingComponent
+        path: 'register',
+        component: RegisterComponent
     },
     {
         path: 'home',
         component: HomeScreenComponent
     },
     {
-        path: 'eh',
-        component: HomeEmployeeComponent
-    },
-    {
-        path: 'list-employee',
-        component: ListEmployeeComponent
-    },
-    {
-        path: 'extrato',
-        component: ExtratoComponent
+        path: 'check-booking',
+        component: CheckBookingComponent
     },
     {
         path: 'booking/first-page',
@@ -59,8 +43,20 @@ export const routes: Routes = [
         component: LastPageBookingComponent
     },
     {
-        path: 'check-booking',
-        component: CheckBookingComponent
+        path: 'view-booking',
+        component: ViewBookingComponent
+    },
+    {
+        path: 'home-employee',
+        component: HomeEmployeeComponent
+    },
+    {
+        path: 'list-employee',
+        component: ListEmployeeComponent
+    },
+    {
+        path: 'extrato',
+        component: ExtratoComponent
     },
     {
         path: 'create-flight',

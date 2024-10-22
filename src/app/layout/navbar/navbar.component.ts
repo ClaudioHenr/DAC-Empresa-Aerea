@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Authentication} from '../../../shared/models/Authentication.model';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  //imports: [CommonModule],
-  imports: [],
+  imports: [
+    CommonModule,
+    RouterLink
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
@@ -15,7 +17,7 @@ import { Authentication} from '../../../shared/models/Authentication.model';
 export class NavbarComponent {
 
   //public roleUser: number | undefined;
-  //public roleUser:number = 2;
+  public roleUser:number = 2;
 
   //constructor(private auth: Authentication) {}
 

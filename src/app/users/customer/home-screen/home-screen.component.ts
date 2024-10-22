@@ -3,6 +3,7 @@ import { ModalBuyMilesComponent } from '../modals/modal-buy-miles/modal-buy-mile
 import { ModalCancelReserveComponent } from "../modals/modal-cancel-reserve/modal-cancel-reserve.component";
 import { Flight } from '../../../../shared/models/Flight.model';
 import { CommonModule, NgFor } from '@angular/common';
+import { NavbarCustomerComponent } from "../../../layout/navbar-customer/navbar-customer.component";
 
 @Component({
   selector: 'app-home-screen',
@@ -11,7 +12,8 @@ import { CommonModule, NgFor } from '@angular/common';
     NgFor,
     CommonModule,
     ModalBuyMilesComponent,
-    ModalCancelReserveComponent
+    ModalCancelReserveComponent,
+    NavbarCustomerComponent
 ],
   templateUrl: './home-screen.component.html',
   styleUrl: './home-screen.component.css'

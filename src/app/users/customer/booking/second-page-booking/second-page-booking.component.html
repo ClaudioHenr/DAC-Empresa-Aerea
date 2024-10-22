@@ -1,6 +1,7 @@
+<app-navbar-customer></app-navbar-customer>
 <div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
-    <div class="w-100 h-90 padding-2">
-      <div class="bg-white w-100 h-100 rounded-3 p-3">
+    <div class="w-100 padding-2">
+      <div class="bg-white w-100 h-100 rounded-3 p-3" style="margin-top: -30px;">
         <div class="text-center mb-3">
           <h3>Informações do Voo: <span class="text-orange">CWB → GRU</span></h3>
           <p>Preencha a quantidade e reserve sua viagem!</p>
@@ -54,15 +55,16 @@
         <div class="d-flex justify-content-center mt-4">
           <button class="btn btn-danger mx-2" [routerLink]="['/booking/first-page-booking']">Cancelar</button>
           <button class="btn btn-success mx-2" [routerLink]="['/booking/last-page-booking']" >Confirmar</button>
-        </div>        
+        </div>  
+        
+        <div>
+          <div class="d-flex justify-content-center" style="padding-bottom: 30px; margin-top: 30px;">
+              <i class="fas fa-chevron-circle-right" [class]="currentScreen === 1 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+              <i class="fas fa-chevron-circle-right mx-3" [class]="currentScreen === 2 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+              <i class="fas fa-chevron-circle-right" [class]="currentScreen === 3 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
+          </div>
       </div>
-      <div>
-        <div class="d-flex justify-content-center" style="padding-bottom: 15px; margin-top: -35px;">
-            <i class="fas fa-chevron-circle-right" [class]="currentScreen === 1 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
-            <i class="fas fa-chevron-circle-right mx-3" [class]="currentScreen === 2 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
-            <i class="fas fa-chevron-circle-right" [class]="currentScreen === 3 ? 'fas fa-chevron-circle-right text-orange' : 'fas fa-chevron-circle-right text-dark'"></i>
-        </div>
-    </div>
+      </div>
     </div>
   </div>
   

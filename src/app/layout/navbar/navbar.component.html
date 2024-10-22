@@ -1,22 +1,55 @@
-<nav class="navbar justify-content-end navbar-expand-md navbar-dark bg-dark">
-        
-    <ul class="navbar-nav mr-auto ms-3">
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/customer/home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/customer/pag01">pag01</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#" routerLink="/customer/pag02">pag02</a>
-          </li>
-        </ul>
-  
-          
-        <ul class="navbar-nav ml-auto me-3">
-          <li class="nav-item">
-            <a class="nav-link me-3"  href="#">Logout</a>
-          </li>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="">VoaTADS</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        </ul>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!--Funcionario-->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Menu Inicial<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Cadastro de Voo</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Funcionários
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+    </ul>
+    <!--Cliente
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active" *ngIf="roleUser === 2">
+        <a class="nav-link" href="#">Comprar Milhas<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item" *ngIf="roleUser === 2">
+        <a class="nav-link" href="#">Extrato de Mihlhas</a>
+      </li>
+      <li class="nav-item dropdown" *ngIf="roleUser === 2">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reservas
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item" *ngIf="roleUser === 2">
+        <a class="nav-link" href="#">Check-in</a>
+      </li>
+    </ul>-->
+    <form class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+  </div>
 </nav>

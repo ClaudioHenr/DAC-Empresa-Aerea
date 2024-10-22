@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { NavbarCustomerComponent } from "../../../../layout/navbar-customer/navbar-customer.component";
 
 @Component({
   selector: 'app-second-page-booking',
   standalone: true,
   imports: [
-    RouterLink
-  ],
+    RouterLink,
+    NavbarCustomerComponent
+],
   templateUrl: './second-page-booking.component.html',
   styleUrl: './second-page-booking.component.css'
 })

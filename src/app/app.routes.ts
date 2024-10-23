@@ -31,6 +31,10 @@ export const routes: Routes = [
         component: CheckBookingComponent
     },
     {
+        path: 'extrato',
+        component: ExtratoComponent
+    },
+    {
         path: 'booking/first-page',
         component: FirstPageBookingComponent
     },
@@ -55,12 +59,7 @@ export const routes: Routes = [
         component: ListEmployeeComponent
     },
     {
-        path: 'extrato',
-        component: ExtratoComponent
-    },
-    {
         path: 'create-flight',
         component: CreateFlightComponent
     }
-
 ];

@@ -9,23 +9,23 @@
       <!--Cliente-->
       <ul class="navbar-nav me-auto mx-auto">
         <li class="nav-item active">
-          <a class="nav-link" [routerLink]="['']">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-link" [routerLink]="['/home']">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['']">Reservas</a>
+          <a class="nav-link" [routerLink]="['/view-booking']">Reservas</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['']">Fazer reserva</a>
+          <a class="nav-link" [routerLink]="['/booking/first-page']">Fazer reserva</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['']">Check-in</a>
+          <a class="nav-link" [routerLink]="['/check-booking']">Check-in</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['']">Extrato de Milhas</a>
+          <a class="nav-link" [routerLink]="['/extrato']">Extrato de Milhas</a>
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" [routerLink]="['']">Logout</button>
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" [routerLink]="['/login']">Logout</button>
       </form>
     </div>
   </div>

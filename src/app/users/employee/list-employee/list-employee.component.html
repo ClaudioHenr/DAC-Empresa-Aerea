@@ -3,43 +3,49 @@
 <app-modal-insert-employee></app-modal-insert-employee>
 <app-modal-update-employee></app-modal-update-employee>
 <app-modal-delete-employee></app-modal-delete-employee>
-<!--Template principal-->
-<div class="body">
-  <div class="container">
-    <div class="main-content">
-      <div class="header-section">
-        <h2>Lista de Funcionários</h2>
+<!--Template principal da tela-->
+<div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
+  <div class="w-100 h-90 padding-2">
+      <div class="bg-white w-100 h-100 rounded-3">
+          <div class="w-100 h-10">
+              <div class="d-flex justify-content-between align-items-center h-100 px-3">
+                  <div>
+                      <h3 class="m-0">Lista de Funcionários</h3>
+                  </div>
+                  <!--Ir para tela de cadastro de voo-->
+                  <div>
+                    <a class="btn btn-orange text-white h-25 px-3" data-bs-toggle="modal" data-bs-target="#registerEmployeeModal">Inserir</a>
+                  </div>
+              </div>
+          </div>
 
-        <div class="add-employee-button">
-          <button data-bs-toggle="modal" data-bs-target="#registerEmployeeModal">Inserir</button>
-        </div>
+          <div class="w-100 h-90 px-3">
+              <div class="rounded border border-dark">
+                  <table class="table table-hover table-bordered m-0 border-dark">
+                      <thead class="align-middle text-center">
+                          <tr>
+                              <th class="text-white bg-orange-darker">Nome</th>                                
+                              <th class="text-white bg-orange-darker">CPF</th>
+                              <th class="text-white bg-orange-darker">Email</th>
+                              <th class="text-white bg-orange-darker">Telefone</th>
+                              <th class="text-white bg-orange-darker">Ações</th>                                
+                          </tr>
+                      </thead>
+                      <tbody class="align-middle text-center">
+                          <tr *ngFor="let employee of employees">
+                              <td>{{ employee.cpf }}</td>
+                              <td>{{ employee.cpf }}</td>
+                              <td><a class="mail" href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
+                              <td>{{ employee.telefone }}</td>
+                              <td>
+                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployeeModal">Editar</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal">Remover</button>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
       </div>
-  
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>CPF</th>
-              <th>Email</th>
-              <th>Telefone</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let employee of employees">
-              <td>{{ employee.nome }}</td>
-              <td>{{ employee.cpf }}</td>
-              <td><a class="mail" href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
-              <td>{{ employee.telefone }}</td>
-              <td>
-                <button class="btn btn-outline-success " data-bs-toggle="modal" data-bs-target="#updateEmployeeModal" type="submit">Editar</button>
-                <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal" type="submit">Remover</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
   </div>
 </div>

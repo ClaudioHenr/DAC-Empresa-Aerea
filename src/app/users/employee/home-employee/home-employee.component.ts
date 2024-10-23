@@ -5,6 +5,7 @@ import { CommonModule, NgFor } from '@angular/common';
 import { BoardingModalComponent } from "../modals/boarding-modal/boarding-modal.component";
 import { ModalConfirmFlightComponent } from "../modals/modal-confirm-flight/modal-confirm-flight.component";
 import { ModalCancelFlightComponent } from "../modals/modal-cancel-flight/modal-cancel-flight.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-employee',
@@ -13,6 +14,7 @@ import { ModalCancelFlightComponent } from "../modals/modal-cancel-flight/modal-
     NavbarComponent,
     NgFor,
     CommonModule,
+    RouterLink,
     BoardingModalComponent,
     ModalConfirmFlightComponent,
     ModalCancelFlightComponent

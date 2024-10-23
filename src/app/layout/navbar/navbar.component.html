@@ -9,17 +9,17 @@
     <!--Funcionario-->
     <ul class="navbar-nav me-auto mx-auto">
       <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['../users/employee/home-employee/home-employee']">Home<span class="sr-only">(current)</span></a>
+        <a class="nav-link" [routerLink]="['/home-employee']">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['']">Cadastro de Voo</a>
+        <a class="nav-link" [routerLink]="['/create-flight']">Cadastro de Voo</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['']">Lista de funcionários</a>
+        <a class="nav-link" [routerLink]="['/list-employee']">Lista de funcionários</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" [routerLink]="['']">Logout</button>
+      <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" [routerLink]="['/login']">Logout</button>
     </form>
   </div>
 </div>

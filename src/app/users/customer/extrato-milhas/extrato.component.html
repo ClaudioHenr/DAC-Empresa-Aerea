@@ -1,68 +1,55 @@
 <app-navbar-customer></app-navbar-customer>
-<link rel="stylesheet" type="text/css" href="extrato.component.css" media="screen" />
 <div class="container">
-    <div class="header">
-      <h1>VoaTADS</h1>
-      <button class="logout-button">Logout</button>
-    </div>
-  
-    <div class="menu">
-      <a href="#">Comprar Milhas</a>
-      <a href="#">Extrato de Milhas</a>
-      <a href="#">Reservas</a>
-      <a href="#">Check-in</a>
-    </div>
-  
-    <div class="main-content">
+
+  <div class="header">
+    <h1>VoaTADS</h1>
+    <button class="btn btn-outline-light">Logout</button>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
       <h2>Extrato de Milhas</h2>
-  
-      <div class="balance">
-        <span>Saldo Atual: </span>
-        <strong>100000</strong>
+      <table class="table table-bordered">
+        <thead class="table-danger text-center">
+          <tr>
+            <th>Data/Hora</th>
+            <th>Valor (R$)</th>
+            <th>Qtd. Milhas Compradas</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>26/09/2024 13:55</td>
+            <td>2.620</td>
+            <td>524</td>
+            <td>COMPRA MILHAS</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between">
+        <h2>Saldo Atual: <span class="text-danger">100000</span></h2>
       </div>
-  
-      <div class="tables">
-        <div class="table-container">
-          <h3>Histórico de compras</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Data/Hora</th>
-                <th>Valor (R$)</th>
-                <th>Qtd. Milhas Compradas</th>
-                <th>Descrição</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>26/09/2024 13:55</td>
-                <td>2.620</td>
-                <td>524</td>
-                <td>COMPRA MILHAS</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-  
-        <div class="table-container">
-          <h3>Histórico de uso</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Data/Hora</th>
-                <th>Qtd. Milhas Usadas</th>
-                <th>Descrição</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>26/09/2024 13:55</td>
-                <td>2.620</td>
-                <td>CWB → GRU</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <h3>Histórico de uso</h3>
+      <table class="table table-bordered">
+        <thead class="table-danger text-center">
+          <tr>
+            <th>Data/Hora</th>
+            <th>Qtd. Milhas Usadas</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>26/09/2024 13:55</td>
+            <td>2.620</td>
+            <td>CWB → GRU</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
+</div>

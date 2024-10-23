@@ -1,85 +1,55 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f04e3e;
+  padding: 10px;
+}
+
+.header h1 {
+  color: white;
+  margin: 0;
+}
+
+.btn-outline-light {
+  border: 1px solid white;
+  color: white;
+}
+
+
+
 .container {
-    font-family: Arial, sans-serif;
-    margin: 0 auto;
-    width: 80%;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f04e3e;
-    padding: 10px;
-  }
-  
-  .header h1 {
-    color: white;
-    margin: 0;
-  }
-  
-  .logout-button {
-    background-color: #f04e3e;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .menu {
-    display: flex;
-    justify-content: space-around;
-    background-color: #f04e3e;
-    padding: 10px;
-  }
-  
-  .menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .main-content {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-  }
-  
-  .balance {
-    text-align: right;
-    font-size: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .tables {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .table-container {
-    width: 48%;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  thead {
-    background-color: #f04e3e;
-    color: white;
-  }
-  
-  th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  h3 {
-    margin-bottom: 10px;
-  }
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+
+.table {
+  width: 100%;
+}
+
+thead.table-danger {
+  background-color: #f04e3e;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.text-danger {
+  color: #f04e3e !important;
+}

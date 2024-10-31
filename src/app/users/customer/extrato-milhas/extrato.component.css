@@ -53,3 +53,23 @@ th, td {
 .text-danger {
   color: #f04e3e !important;
 }
+
+.btn-orange{
+  background-color: #F0452D !important;
+}
+
+.bg-white {
+  background-color: white !important;
+}
+
+.text-white {
+  color: white !important;
+}
+
+.bg-orange-darker{
+  background-color: #F0452D;
+}
+
+.bg-orange {
+  background-color: #FF725E !important;
+}

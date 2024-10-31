@@ -1,55 +1,63 @@
 <app-navbar-customer></app-navbar-customer>
-<div class="container">
-
-  <div class="header">
-    <h1>VoaTADS</h1>
-    <button class="btn btn-outline-light">Logout</button>
-  </div>
-
-
-  <div class="row">
-    <div class="col-md-6">
-      <h2>Extrato de Milhas</h2>
-      <table class="table table-bordered">
-        <thead class="table-danger text-center">
-          <tr>
-            <th>Data/Hora</th>
-            <th>Valor (R$)</th>
-            <th>Qtd. Milhas Compradas</th>
-            <th>Descrição</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>26/09/2024 13:55</td>
-            <td>2.620</td>
-            <td>524</td>
-            <td>COMPRA MILHAS</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-md-6">
-      <div class="d-flex justify-content-between">
-        <h2>Saldo Atual: <span class="text-danger">100000</span></h2>
+<div class="bg-orange d-flex" style="height: 89vh;">
+  <div class="w-100 h-90 p-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Extrato de Milhas</h2>
+          <h3>Histórico de compras</h3>
+          <table class="table table-bordered">
+            <thead class="text-center">
+              <tr>
+                <th class="text-white bg-orange-darker">Data/Hora</th>
+                <th class="text-white bg-orange-darker">Valor (R$)</th>
+                <th class="text-white bg-orange-darker">Qtd. Milhas Compradas</th>
+                <th class="text-white bg-orange-darker">Descrição</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="purchaseHistory.length; else noPurchases">
+              <tr *ngFor="let purchase of purchaseHistory">
+                <td>{{ purchase.date }}</td>
+                <td>{{ purchase.amount }}</td>
+                <td>{{ purchase.miles }}</td>
+                <td>{{ purchase.description }}</td>
+              </tr>
+            </tbody>
+            <ng-template #noPurchases>
+              <tr>
+                <td colspan="4" class="text-center">Nenhuma compra registrada</td>
+              </tr>
+            </ng-template>
+          </table>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex justify-content-end">
+            <h2>Saldo Atual: <span class="text-danger">{{ milesBalance }}</span></h2>
+          </div>
+          <h3>Histórico de uso</h3>
+          <table class="table table-bordered">
+            <thead class="table-danger text-center">
+              <tr>
+                <th class="text-white bg-orange-darker">Data/Hora</th>
+                <th class="text-white bg-orange-darker">Qtd. Milhas Usadas</th>
+                <th class="text-white bg-orange-darker">Descrição</th>
+              </tr>
+            </thead>
+            <tbody *ngIf="usageHistory.length; else noUsage">
+              <tr *ngFor="let usage of usageHistory">
+                <td>{{ usage.date }}</td>
+                <td>{{ usage.miles }}</td>
+                <td>{{ usage.description }}</td>
+              </tr>
+            </tbody>
+            <ng-template #noUsage>
+              <tr>
+                <td colspan="3" class="text-center">Nenhum uso registrado</td>
+              </tr>
+            </ng-template>
+          </table>
+        </div>
       </div>
-      <h3>Histórico de uso</h3>
-      <table class="table table-bordered">
-        <thead class="table-danger text-center">
-          <tr>
-            <th>Data/Hora</th>
-            <th>Qtd. Milhas Usadas</th>
-            <th>Descrição</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>26/09/2024 13:55</td>
-            <td>2.620</td>
-            <td>CWB → GRU</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NavbarCustomerComponent } from '../../../layout/navbar-customer/navbar-customer.component';
-import { MilesService } from '../../../services/miles.services';
+import { MilesService } from '../../../services/miles.service';
 
 @Component({
   selector: 'app-extrato-milhas',

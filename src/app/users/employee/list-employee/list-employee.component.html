@@ -2,8 +2,7 @@
 <!--Modais-->
 <app-modal-insert-employee></app-modal-insert-employee>
 <app-modal-update-employee></app-modal-update-employee>
-<app-modal-delete-employee></app-modal-delete-employee>
-<!--Template principal da tela-->
+<app-modal-delete-employee [employeeId]="selectedEmployeeId"></app-modal-delete-employee><!--Template principal da tela-->
 <div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
   <div class="w-100 h-90 padding-2">
       <div class="bg-white w-100 h-100 rounded-3">

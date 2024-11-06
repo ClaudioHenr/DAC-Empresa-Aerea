@@ -30,7 +30,7 @@ interface Employee {
 })
 export class ListEmployeeComponent implements OnInit {
   employees: Employee[] = [];
-  employeeId?: string;
+  selectedEmployeeId?: string;
 
   constructor(private http: HttpClient) {}
 
@@ -46,7 +46,6 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   setEmployeeId(id: string) {
-    this.employeeId = id;
+    this.selectedEmployeeId = id;
   }
 }
-

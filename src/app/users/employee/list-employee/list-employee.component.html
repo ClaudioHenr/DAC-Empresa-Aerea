@@ -33,13 +33,13 @@
                       </thead>
                       <tbody class="align-middle text-center">
                           <tr *ngFor="let employee of employees">
-                              <td>{{ employee.cpf }}</td>
+                              <td>{{ employee.name }}</td>
                               <td>{{ employee.cpf }}</td>
                               <td><a class="mail" href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
-                              <td>{{ employee.telefone }}</td>
+                              <td>{{ employee.phone }}</td>
                               <td>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployeeModal">Editar</button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal">Remover</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal" (click)="setEmployeeId(employee.id)">Remover</button>
                               </td>
                           </tr>
                       </tbody>

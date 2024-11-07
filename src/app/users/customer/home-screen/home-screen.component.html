@@ -42,7 +42,8 @@
                                 <td>{{flight.dateDeparture | date: 'dd/MM/yyyy HH:mm' }}</td>
                                 <td>{{flight.departureAirport}}</td>
                                 <td>{{flight.destinationAirport}}</td>
-                                <td class="text-primary fw-medium">Visualizar
+                                <td>
+                                    <span class="text-primary fw-medium" [routerLink]="['/view-booking']">Visualizar</span>
                                     <br>
                                     <!--Acionar modal cancel reserve-->
                                     <span class="text-danger fw-medium" data-bs-toggle="modal" data-bs-target="#cancelReserveModal">Cancelar</span>

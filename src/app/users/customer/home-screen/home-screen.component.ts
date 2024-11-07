@@ -4,11 +4,13 @@ import { ModalCancelReserveComponent } from "../modals/modal-cancel-reserve/moda
 import { Flight } from '../../../../shared/models/Flight.model';
 import { CommonModule, NgFor } from '@angular/common';
 import { NavbarCustomerComponent } from "../../../layout/navbar-customer/navbar-customer.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home-screen',
   standalone: true,
   imports: [
+    RouterLink,
     NgFor,
     CommonModule,
     ModalBuyMilesComponent,

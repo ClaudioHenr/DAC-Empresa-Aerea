@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { NavbarCustomerComponent } from '../../../layout/navbar-customer/navbar-customer.component';
 import { MilesService } from '../../../services/miles.service';
 
@@ -23,24 +24,16 @@ export class ExtratoComponent implements OnInit {
   purchaseHistory: any[] = [];
   usageHistory: any[] = [];
 
-  constructor(private milesService: MilesService) {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    const customerId = '9bb58f2b';
+    this.fetchCustomerData();
+  }
 
-    this.milesService.getMilesBalance(customerId).subscribe(
-      (data) => this.milesBalance = data.balance,
-      (error) => this.errorMessage = 'Erro ao obter saldo de milhas'
-    );
-
-    this.milesService.getPurchaseHistory(customerId).subscribe(
-      (data) => this.purchaseHistory = data.history,
-      (error) => this.errorMessage = 'Erro ao obter histórico de compras'
-    );
-
-    this.milesService.getUsageHistory(customerId).subscribe(
-      (data) => this.usageHistory = data.history,
-      (error) => this.errorMessage = 'Erro ao obter histórico de uso'
-    );
+  fetchCustomerData() {
+    const customerId = 'ad237302-4b0c-48bf-abd9-d01a0c6e8a2e'; // Replace with actual customer ID
+    this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
+      this.milesBalance = data.miles;
+    });
   }
 }

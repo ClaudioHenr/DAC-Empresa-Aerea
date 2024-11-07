@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ReusableModalComponent } from '../../../../../shared/modals/base/reusable-modal/reusable-modal.component';
+import axios from 'axios';
 
 @Component({
   selector: 'app-modal-delete-employee',
@@ -11,6 +12,18 @@ import { ReusableModalComponent } from '../../../../../shared/modals/base/reusab
   styleUrl: './modal-delete-employee.component.css'
 })
 export class ModalDeleteEmployeeComponent {
+  @Input() employeeId?: string;
 
-  deleteEmployee() {}
+  async deleteEmployee() {
+    try {
+      const response = await axios.delete(`http://localhost:5000/employees/${this.employeeId}`);
+      if (response.status === 200) {
+        alert('Funcionário removido com sucesso');
+        // Fechar o modal e atualizar a lista de funcionários, se necessário
+      }
+    } catch (error) {
+      console.error('Erro ao remover funcionário:', error);
+      alert('Erro ao remover funcionário');
+    }
+  }
 }

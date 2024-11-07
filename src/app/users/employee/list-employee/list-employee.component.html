@@ -2,8 +2,7 @@
 <!--Modais-->
 <app-modal-insert-employee></app-modal-insert-employee>
 <app-modal-update-employee></app-modal-update-employee>
-<app-modal-delete-employee></app-modal-delete-employee>
-<!--Template principal da tela-->
+<app-modal-delete-employee [employeeId]="selectedEmployeeId"></app-modal-delete-employee><!--Template principal da tela-->
 <div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
   <div class="w-100 h-90 padding-2">
       <div class="bg-white w-100 h-100 rounded-3">
@@ -33,13 +32,13 @@
                       </thead>
                       <tbody class="align-middle text-center">
                           <tr *ngFor="let employee of employees">
-                              <td>{{ employee.cpf }}</td>
+                              <td>{{ employee.name }}</td>
                               <td>{{ employee.cpf }}</td>
                               <td><a class="mail" href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
-                              <td>{{ employee.telefone }}</td>
+                              <td>{{ employee.phone }}</td>
                               <td>
                                 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployeeModal">Editar</button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal">Remover</button>
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal" (click)="setEmployeeId(employee.id)">Remover</button>
                               </td>
                           </tr>
                       </tbody>

@@ -6,6 +6,7 @@ import { Flight } from '../../../../shared/models/Flight.model';
 import { CommonModule, NgFor } from '@angular/common';
 import { NavbarCustomerComponent } from "../../../layout/navbar-customer/navbar-customer.component";
 import { RouterLink } from '@angular/router';
+import { LoginService } from '../../../authentication/login/services/login.service';
 
 @Component({
   selector: 'app-home-screen',
@@ -30,16 +31,18 @@ export class HomeScreenComponent implements OnInit {
   ];
   milesBalance: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private loginService: LoginService) {}
 
   ngOnInit() {
     this.fetchCustomerData();
   }
 
   fetchCustomerData() {
-    const customerId = 'ad237302-4b0c-48bf-abd9-d01a0c6e8a2e'; // Replace with actual customer ID
-    this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
-      this.milesBalance = data.miles;
-    });
+    const user = this.loginService.getLocalStorage("user")
+    this.milesBalance = user.miles
+    // const customerId = 'ad237302-4b0c-48bf-abd9-d01a0c6e8a2e'; // Replace with actual customer ID
+    // this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
+    //   this.milesBalance = data.miles;
+    // });
   }
 }

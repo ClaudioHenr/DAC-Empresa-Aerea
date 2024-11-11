@@ -13,11 +13,22 @@ export class LoginService {
   login(auth: Authentication) {
     try {
       const result = axios.post(this.url, auth)
-      console.log("RESULT SERVICE:", result)
       return result 
     } catch (error) {
       console.error("Erro ao fazer login: ", error)
       throw error
     }
+  }
+  
+  setLocalStorage(key: string, data: string) {
+    localStorage.setItem(key, JSON.stringify(data))
+    
+    const userInfo = this.getLocalStorage(key)
+    console.log("User INFO local: ", userInfo)
+  }
+
+  getLocalStorage(key: string) {
+    const item = localStorage.getItem(key)
+    return item ? JSON.parse(item) : null;
   }
 }

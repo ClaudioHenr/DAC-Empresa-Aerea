@@ -28,13 +28,11 @@ export class LoginComponent {
   async authentication() {
     try {
       const result = await this.loginService.login(this.auth)
-      this.handleLogin(result) 
+      this.loginService.setLocalStorage("user", result.data.user)
+      this.loginService.setLocalStorage("auth", result.data.auth)
+      this.handleLogin(result)
     } catch (error: any) {
-      if (error.response.status === 401) {
-        console.error("Erro ao logar: ", error.response.data.message)
-        this.errorMessage = "Credenciais inválidas"
-      }
-      this.errorMessage = error.response.data.message
+      throw error
     }
   }
 

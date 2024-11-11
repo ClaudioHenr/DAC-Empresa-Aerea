@@ -34,17 +34,19 @@ export class LoginComponent {
     } catch (error: any) {
       if (error.response.status === 401) {
         console.error("Erro ao logar: ", error.response.data.message)
-        this.errorMessage = error.response.data.message
+        this.errorMessage = "Credenciais inválidas"
       }
+      this.errorMessage = error.response.data.message
     }
   }
 
   handleLogin(result: any) {
-    const roleUser: number = result.data.auth.role
-    if (roleUser == AuthenticationType.EMPLOYEE) {
+    const typeUser: string = result.data.auth.type
+    console.log(typeof result.data.auth.type)
+    if (typeUser == AuthenticationType.EMPLOYEE) {
       console.log("it is a employee")
-      this.router.navigate(['/eh'])
-    } else if (roleUser === AuthenticationType.CUSTOMER) {
+      this.router.navigate(['/home-employee'])
+    } else if (typeUser === AuthenticationType.CUSTOMER) {
       console.log("it is a customer")
       this.router.navigate(['/home'])
     } else {

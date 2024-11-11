@@ -11,8 +11,15 @@ export class RegisterService {
   constructor() { }
 
   register(customer: Customer) {
-    const result = axios.post(this.url, customer)
-    console.log("Resultado cadastro: ", result)
-    return result
+    try {
+      const result = axios.post(this.url, customer)
+      console.log("Resultado cadastro: ", result)
+      return result
+    } catch (error) {
+      console.log("Erro ao registrar: ", error)
+      throw error
+    }
+
+    
   }
 }

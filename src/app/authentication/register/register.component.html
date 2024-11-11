@@ -60,30 +60,30 @@
         </div>
         
         <!--CEP-->
-        <div class="form-group col-6" *ngIf="customer.address">
+        <div class="form-group col-6">
             <label>CEP</label>
             <input type="text" class="form-control" placeholder="CEP" 
-            name="cep"
-            [(ngModel)]="customer.address.CEP"
-            #cepInput="ngModel"
+            name="zipCode"
+            [(ngModel)]="customer.zipCode"
+            #zipCodeInput="ngModel"
             pattern="\d{5}\d{3}"
             required>
-            <div *ngIf="cepInput.invalid && (cepInput.dirty || cepInput.touched)" class="text-danger">
-                <div *ngIf="cepInput.errors?.['required']">
+            <div *ngIf="zipCodeInput.invalid && (zipCodeInput.dirty || zipCodeInput.touched)" class="text-danger">
+                <div *ngIf="zipCodeInput.errors?.['required']">
                     CEP é obrigatório
                 </div>
-                <div *ngIf="cepInput.errors?.['pattern']">
+                <div *ngIf="zipCodeInput.errors?.['pattern']">
                     Por favor, insira um CEP válido
                 </div>
             </div>
         </div>
         
         <!--Rua-->
-        <div class="form-group col-6" *ngIf="customer.address">
+        <div class="form-group col-6">
             <label>Rua</label>
             <input type="text" class="form-control" placeholder="Rua" 
             name="street"
-            [(ngModel)]="customer.address.street"
+            [(ngModel)]="customer.street"
             #streetInput="ngModel"
             required>
             <div *ngIf="streetInput.invalid && (streetInput.dirty || streetInput.touched)" class="text-danger">
@@ -93,26 +93,56 @@
             </div>
         </div>
 
+        <!--Número-->
+        <div class="form-group col-6">
+            <label>Número</label>
+            <input type="number" class="form-control" placeholder="Número" 
+            name="number"
+            [(ngModel)]="customer.number"
+            #numberInput="ngModel"
+            required>
+            <div *ngIf="numberInput.invalid && (numberInput.dirty || numberInput.touched)" class="text-danger">
+                <div *ngIf="numberInput.errors?.['required']">
+                    Número é obrigatório.
+                </div>
+            </div>
+        </div>
+
         <!--Complement-->
-        <div class="form-group col-6" *ngIf="customer.address">
+        <div class="form-group col-6">
             <label>Complemento</label>
             <input type="text" class="form-control" placeholder="Complemento" 
             name="complement"
-            [(ngModel)]="customer.address.complement"
+            [(ngModel)]="customer.complement"
             required>
         </div>
 
-        <!--password-->
+        <!--Estado-->
         <div class="form-group col-6">
-            <label>Senha</label>
-            <input type="password" class="form-control" placeholder="Senha" 
-            name="password"
-            [(ngModel)]="customer.password"
-            #passwordInput="ngModel"
+            <label>Estado</label>
+            <input type="text" class="form-control" placeholder="Estado" 
+            name="state"
+            [(ngModel)]="customer.state"
+            #stateInput="ngModel"
             required>
-            <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="text-danger">
-                <div *ngIf="passwordInput.errors?.['required']">
-                    Senha é obrigatória
+            <div *ngIf="stateInput.invalid && (stateInput.dirty || stateInput.touched)" class="text-danger">
+                <div *ngIf="stateInput.errors?.['required']">
+                    Estado é obrigatória.
+                </div>
+            </div>
+        </div>
+    
+        <!--Cidade-->
+        <div class="form-group col-6">
+            <label>Cidade</label>
+            <input type="text" class="form-control" placeholder="Cidade" 
+            name="city"
+            [(ngModel)]="customer.city"
+            #cityInput="ngModel"
+            required>
+            <div *ngIf="cityInput.invalid && (cityInput.dirty || cityInput.touched)" class="text-danger">
+                <div *ngIf="cityInput.errors?.['required']">
+                    Cidade é obrigatória.
                 </div>
             </div>
         </div>

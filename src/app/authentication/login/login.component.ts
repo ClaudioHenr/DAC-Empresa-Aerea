@@ -4,7 +4,6 @@ import { Authentication, AuthenticationType } from '../../../shared/models/Authe
 import { NgIf } from '@angular/common';
 import { LoginService } from './services/login.service';
 import { Router, RouterLink } from '@angular/router';
-import { NavbarComponent } from "../../layout/navbar/navbar.component";
 
 @Component({
   selector: 'app-login',
@@ -12,8 +11,7 @@ import { NavbarComponent } from "../../layout/navbar/navbar.component";
   imports: [
     FormsModule,
     NgIf,
-    RouterLink,
-    NavbarComponent
+    RouterLink
 ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -44,13 +42,11 @@ export class LoginComponent {
     const typeUser: string = result.data.auth.type
     console.log(typeof result.data.auth.type)
     if (typeUser == AuthenticationType.EMPLOYEE) {
-      console.log("it is a employee")
       this.router.navigate(['/home-employee'])
     } else if (typeUser === AuthenticationType.CUSTOMER) {
-      console.log("it is a customer")
       this.router.navigate(['/home'])
     } else {
-      console.log("who is this dude??")
+      console.log("Tipo de usuário não reconhecido")
     }
   }
 }

@@ -1,11 +1,11 @@
 export class Flight {
-    cod?: string;
-    dateDeparture?: Date; // data/hora
-    departureAirport?: string;
-    destinationAirport?: string;
-    price?: number;
-    totalSeats?: number;
-    occupiedSeats?: number
-
-
+    codigoVoo?: string;
+    dataVoo?: Date; // data/hora
+    aeroportoOrigem?: string;
+    aeroportoDestino?: string;
+    valorPassagem?: number;
+    valorMilhas?: number;
+    totalPoltronas?: number;
+    qtdPoltronasOcupadas?: number;
+    statusVoo?: string
 }

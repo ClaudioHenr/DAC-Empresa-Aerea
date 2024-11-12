@@ -4,7 +4,7 @@
             <p>Voos nas próximas 48h:</p>
             <ul>
                 <li *ngFor="let flight of flights">
-                    {{ flight.departureAirport }} → {{ flight.departureAirport }} - {{ flight.dateDeparture | date: 'dd/MM/yyyy HH:mm' }}
+                    {{ flight.aeroportoOrigem }} → {{ flight.aeroportoDestino }} - {{ flight.dataVoo| date: 'dd/MM/yyyy HH:mm' }}
                 </li>
             </ul>
         </div>

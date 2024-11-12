@@ -1,6 +1,6 @@
 export enum AuthenticationType {
-    EMPLOYEE = 1,
-    CUSTOMER = 2
+    EMPLOYEE = '1',
+    CUSTOMER = '2'
 }
 
 export class Authentication {

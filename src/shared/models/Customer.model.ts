@@ -5,5 +5,10 @@ export class Customer {
     cpf?: string;
     email?: string;
     address?: Address;
-    password?: string;
+    street?: string;
+    number?: number;
+    zipCode?: string;
+    city?: string;
+    state?: string;
+    complement?: string;
 }

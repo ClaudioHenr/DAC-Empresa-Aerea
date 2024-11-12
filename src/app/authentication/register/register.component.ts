@@ -20,9 +20,8 @@ import { RegisterService } from './services/register.service';
 export class RegisterComponent {
   @ViewChild('registerForm') registerForm!: NgForm
 
-  customer: Customer = {
-    address: new Address()
-  }
+  // customer: Customer = { address: new Address() }
+  customer: Customer = new Customer();
 
   public errorMessage = ''
 
@@ -33,13 +32,14 @@ export class RegisterComponent {
       const result = await this.registerService.register(this.customer)
       this.handleRegister(result)
     } catch (error: any) {
-      console.error(error.response.data.message) 
+      console.error(error.response.data.message)
+      this.errorMessage = error.response.data.message
     }
   }
 
   handleRegister(result: any) {
     console.log("Retorno: ", result.data.message)
-    alert(`${result.data.message}\nSenha enviado para o seu email`)
+    alert(`${result.data.message}\nSenha enviada para o seu email`)
     this.route.navigate(['/l'])
   }
 

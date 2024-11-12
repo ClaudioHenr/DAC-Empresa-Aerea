@@ -33,11 +33,15 @@
             Senha é obrigatória.
           </div>
 
+          <div class="text-danger">
+            {{errorMessage}}
+          </div>
+
           <!-- Entrar -->
           <button type="button" class="btn btn-primary" (click)="authentication()">Entrar</button>
 
           <!-- Cadastro -->
-          <p>Não possui conta? <a [routerLink]="['/autocadastro']" class="create-account-link">Crie Agora!</a></p>
+          <p>Não possui conta? <a [routerLink]="['/register']" class="create-account-link">Crie Agora!</a></p>
           
         </div>
       </form>

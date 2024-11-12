@@ -15,6 +15,10 @@ import { CreateFlightComponent } from './users/employee/create-flight/create-fli
 
 export const routes: Routes = [
     {
+        path: '',
+        component: LoginComponent
+    }, 
+    {
         path: 'login',
         component: LoginComponent
     },    

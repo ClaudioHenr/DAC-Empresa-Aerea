@@ -38,19 +38,18 @@
                         </thead>
                         <tbody class="align-middle text-center">
                             <tr *ngFor="let flight of listFlight">
-                                <td>{{flight.dateDeparture | date: 'dd/MM/yyyy HH:mm' }}</td>
-                                <td>{{flight.departureAirport}}</td>
-                                <td>{{flight.destinationAirport}}</td>
-                                <td class="text-primary fw-medium">Visualizar
+                                <td>{{flight.dataVoo | date: 'dd/MM/yyyy HH:mm' }}</td>
+                                <td>{{flight.aeroportoOrigem}}</td>
+                                <td>{{flight.aeroportoDestino}}</td>
+                                <td>
+                                    <span class="text-primary fw-medium" [routerLink]="['/view-booking']">Visualizar</span>
                                     <br>
                                     <!--Acionar modal cancel reserve-->
                                     <span class="text-danger fw-medium" data-bs-toggle="modal" data-bs-target="#cancelReserveModal">Cancelar</span>
                                 </td>
-                                <td class="text-warning fw-medium">Reservado
-                                    <br>
-                                    <span class="text-success fw-medium">Realizado</span>
-                                    <br>
-                                    <span class="text-danger fw-medium">Cancelado</span>
+                                <td class="text-warning fw-medium">
+                                    <span *ngIf="flight.statusVoo == 'Realizado'" class="text-success fw-medium">{{flight.statusVoo}}</span>
+                                    <span *ngIf="flight.statusVoo == 'Cancelado'" class="text-danger fw-medium">{{flight.statusVoo}}</span>
                                 </td>
                             </tr>
                         </tbody>

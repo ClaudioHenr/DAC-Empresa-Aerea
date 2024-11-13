@@ -19,7 +19,6 @@ export class ModalDeleteEmployeeComponent {
       const response = await axios.delete(`http://localhost:3000/employees/${this.employeeId}`);
       if (response.status === 200) {
         window.location.reload();
-        // Fechar o modal e atualizar a lista de funcionários, se necessário
       }
     } catch (error) {
       console.error('Erro ao remover funcionário:', error);

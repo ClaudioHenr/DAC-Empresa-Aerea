@@ -1,8 +1,9 @@
 <app-navbar></app-navbar>
 <!--Modais-->
 <app-modal-insert-employee></app-modal-insert-employee>
-<app-modal-update-employee></app-modal-update-employee>
-<app-modal-delete-employee [employeeId]="selectedEmployeeId"></app-modal-delete-employee><!--Template principal da tela-->
+<app-modal-update-employee [employeeId]="selectedEmployeeId"></app-modal-update-employee>
+<app-modal-delete-employee [employeeId]="selectedEmployeeId"></app-modal-delete-employee>
+<!--Template principal da tela-->
 <div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
   <div class="w-100 h-90 padding-2">
       <div class="bg-white w-100 h-100 rounded-3">
@@ -17,7 +18,6 @@
                   </div>
               </div>
           </div>
-
           <div class="w-100 h-90 px-3">
               <div class="rounded border border-dark">
                   <table class="table table-hover table-bordered m-0 border-dark">
@@ -37,8 +37,8 @@
                               <td><a class="mail" href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
                               <td>{{ employee.phone }}</td>
                               <td>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployeeModal">Editar</button>
-                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal" (click)="setEmployeeId(employee.id)">Remover</button>
+                                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployeeModal" (click)="setEmployeeId(employee.id)">Editar</button>
+                                  <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal" (click)="setEmployeeId(employee.id)">Remover</button>
                               </td>
                           </tr>
                       </tbody>

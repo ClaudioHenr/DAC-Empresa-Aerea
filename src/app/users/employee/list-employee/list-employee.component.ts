@@ -39,9 +39,9 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   fetchEmployees(): void {
-    this.http.get<Employee[]>('http://localhost:5000/employees')
+    this.http.get<{ Employees: Employee[] }>('http://localhost:3000/employees')
       .subscribe(data => {
-        this.employees = data;
+        this.employees = data.Employees;
       });
   }
 

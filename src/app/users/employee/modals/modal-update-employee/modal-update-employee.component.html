@@ -50,6 +50,9 @@
                     </div>                      
                   </div>
               </form>
+              <div *ngIf="errorMessage" class="text-danger">
+                {{ errorMessage }}
+              </div>
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>

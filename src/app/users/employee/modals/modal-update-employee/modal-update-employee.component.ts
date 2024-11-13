@@ -19,37 +19,43 @@ import { NgIf } from '@angular/common';
 export class ModalUpdateEmployeeComponent implements OnInit {
   @Input() employeeId?: string;
   employee: Employee = new Employee();
+  errorMessage: string = '';
 
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
-    console.log('ModalUpdateEmployeeComponent initialized with employeeId:', this.employeeId);
     if (this.employeeId) {
       this.fetchEmployeeDetails();
     }
   }
 
   fetchEmployeeDetails(): void {
-    this.http.get<{ Employees: Employee[] }>(`http://localhost:3000/employees/${this.employeeId}`)
+    this.http.get<Employee>(`http://localhost:3000/employees/${this.employeeId}`)
       .subscribe(data => {
-        if (data.Employees && data.Employees.length > 0) {
-          this.employee = data.Employees[0];
-        }
+        this.employee = data;
       },
       error => {
         console.error('Erro ao buscar detalhes do funcionário', error);
-      }
-    );
+      });
   }
 
   updateEmployee(): void {
-    this.http.put(`http://localhost:3000/employees/${this.employeeId}`, this.employee).subscribe(
-      response => {
-        console.log('Employee updated successfully', response);
-      },
-      error => {
-        console.error('Error updating employee', error);
-      }
-    );
+    if (this.isFormValid()) {
+      this.http.put(`http://localhost:3000/employees/${this.employeeId}`, this.employee).subscribe(
+        response => {
+          console.log('Employee updated successfully', response);
+          window.location.reload();
+        },
+        error => {
+          console.error('Error updating employee', error);
+        }
+      );
+    } else {
+      this.errorMessage = 'Todos os campos são obrigatórios.';
+    }
+  }
+
+  isFormValid(): boolean {
+    return !!this.employee.name && !!this.employee.cpf && !!this.employee.email && !!this.employee.phone;
   }
 }

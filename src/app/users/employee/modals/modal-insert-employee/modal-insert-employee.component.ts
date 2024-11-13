@@ -20,17 +20,27 @@ import { RouterLink } from '@angular/router';
 })
 export class ModalInsertEmployeeComponent {
   employee: Employee = new Employee();
+  errorMessage: string = '';
 
   constructor(private http: HttpClient) {}
 
   registerEmployee() {
-    this.http.post('http://localhost:3000/employees', this.employee).subscribe(
-      response => {
-        console.log('Employee registered successfully', response);
-      },
-      error => {
-        console.error('Error registering employee', error);
-      }
-    );
+    if (this.isFormValid()) {
+      this.http.post('http://localhost:3000/employees', this.employee).subscribe(
+        response => {
+          console.log('Employee registered successfully', response);
+          window.location.reload();
+        },
+        error => {
+          console.error('Error registering employee', error);
+        }
+      );
+    } else {
+      this.errorMessage = 'Todos os campos são obrigatórios.';
+    }
+  }
+
+  isFormValid(): boolean {
+    return !!this.employee.name && !!this.employee.cpf && !!this.employee.email && !!this.employee.phone;
   }
 }

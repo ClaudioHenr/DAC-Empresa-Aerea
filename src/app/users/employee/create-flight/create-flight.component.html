@@ -1,80 +1,108 @@
 <app-navbar></app-navbar>
-<div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column text">
-    <div class="w-100 h-90 padding-2">
-      <div class="bg-white w-100 h-100 rounded-3 p-3">
-        <div class="text-center mb-3">
-          <h3>Cadastro de Voo </h3>
-          <p>Preencha os campos e clique em confirmar para criar um novo Voo.</p>
-        </div>
-
-  
-        <div class="d-flex justify-content-between mb-4">
-          <div class="d-flex flex-column align-items-center">
-            <label for="qtdPassagens"><strong>Código do Voo:</strong></label>
-            <input id="codigovoo" style="background-color: rgb(199, 196, 196);"  placeholder="#TADS000" class="form-control1" disabled>
-
-              <!-- Outras opções aqui -->
-
-          </div>
-  
-          <div class="d-flex flex-column align-items-center">
-            <label><strong>Data:</strong></label>
-            <input id="datavoo" placeholder="20/10/2024" class="form-control1">
-          </div>
-  
-          <div class="d-flex flex-column align-items-center">
-            <label><strong>Horário:</strong></label>
-            <input id="horariovoo" placeholder="14:00" class="form-control1">
-          </div>
-
-        </div>
-
-
-        <div class="d-flex justify-content-between mb-4">
-            <div class="d-flex flex-column align-items-center">
-              <label for="qtdPassagens"><strong>Aeroporto Destino:</strong></label>
-              <input id="destinovoo" placeholder="CWB - Curitiba" class="form-control2">
-
-                <!-- Outras opções aqui -->
-
-            </div>
-
-    
-            <div class="d-flex flex-column align-items-center">
-              <label><strong>Aeroporto Destino:</strong></label>
-              <input id="destinovooo" placeholder="GRU - São Paulo" class="form-control2">
-            </div>
-
-        </div>
-
-
-        <div class="d-flex justify-content-between mb-4">
-            <div class="d-flex flex-column align-items-center">
-              <label for="qtdPassagens"><strong>Valor Passagem(R$):</strong></label>
-              <input id="valorvoo" placeholder="230,00" class="form-control1">
-
-
-            </div>
-    
-            <div class="d-flex flex-column align-items-center">
-              <label><strong>Valor em Milhas:</strong></label>
-              <input id="valormilhas" style="background-color: rgb(199, 196, 196);" placeholder="1.150" class="form-control1" disabled>
-            </div>
-    
-            <div class="d-flex flex-column align-items-center">
-              <label><strong>Qtd. Poltronas:</strong></label>
-              <input id="qtdpoltronas" placeholder="70" class="form-control1">
-            </div>
-  
-          </div>
-        <div class="d-flex justify-content-center mt-4">
-          <button class="btn btn-danger mx-2">Cancelar</button>
-          <button class="btn btn-success mx-2">Confirmar</button>
-        </div>        
+<div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
+  <div class="container-fluid h-90">
+    <div class="bg-white w-100 h-100 rounded-3 p-4">
+      <!-- Cabeçalho -->
+      <div class="text-center mb-4">
+        <h3>Cadastro de Voo</h3>
+        <p>Preencha os campos e clique em confirmar para criar um novo Voo.</p>
       </div>
-      <div>
 
-    </div>
+      <!-- Formulário -->
+      <form class="row g-3" #flightForm="ngForm" method="post">
+        <!-- Código do Voo -->
+        <div class="col-12">
+          <label for="codigoVoo" class="form-label"><strong>Código do Voo:</strong></label>
+          <input type="text" id="codigoVoo" class="form-control" placeholder="#TADS000" 
+                 [(ngModel)]="flight.codigoVoo" name="codigoVoo" required>
+          <div *ngIf="flightForm.submitted && !flight.codigoVoo" class="text-danger">
+            Código do voo é obrigatório.
+          </div>
+        </div>
+
+        <!-- Data e Hora do Voo -->
+        <div class="col-md-6">
+          <label for="dataVoo" class="form-label"><strong>Data e Hora do Voo:</strong></label>
+          <input type="datetime-local" id="dataVoo" class="form-control" 
+                 [(ngModel)]="flight.dataVoo" name="dataVoo" required>
+          <div *ngIf="flightForm.submitted && !flight.dataVoo" class="text-danger">
+            Data e hora do voo são obrigatórias.
+          </div>
+        </div>
+
+        <!-- Aeroporto de Origem -->
+        <div class="col-md-6">
+          <label for="aeroportoOrigem" class="form-label"><strong>Aeroporto de Origem:</strong></label>
+          <input type="text" id="aeroportoOrigem" class="form-control" placeholder="CWB - Curitiba"
+                 [(ngModel)]="flight.aeroportoOrigem" name="aeroportoOrigem" required>
+          <div *ngIf="flightForm.submitted && !flight.aeroportoOrigem" class="text-danger">
+            Aeroporto de origem é obrigatório.
+          </div>
+        </div>
+
+        <!-- Aeroporto de Destino -->
+        <div class="col-md-6">
+          <label for="aeroportoDestino" class="form-label"><strong>Aeroporto de Destino:</strong></label>
+          <input type="text" id="aeroportoDestino" class="form-control" placeholder="GRU - São Paulo"
+                 [(ngModel)]="flight.aeroportoDestino" name="aeroportoDestino" required>
+          <div *ngIf="flightForm.submitted && !flight.aeroportoDestino" class="text-danger">
+            Aeroporto de destino é obrigatório.
+          </div>
+        </div>
+
+        <!-- Valor da Passagem -->
+        <div class="col-md-4">
+          <label for="valorPassagem" class="form-label"><strong>Valor da Passagem (R$):</strong></label>
+          <input type="number" id="valorPassagem" class="form-control" placeholder="230,00" 
+                 [(ngModel)]="flight.valorPassagem" name="valorPassagem" required>
+          <div *ngIf="flightForm.submitted && !flight.valorPassagem" class="text-danger">
+            Valor da passagem é obrigatório.
+          </div>
+        </div>
+
+        <!-- Valor em Milhas (calculado) -->
+        <div class="col-md-4">
+          <label for="valorMilhas" class="form-label"><strong>Valor em Milhas:</strong></label>
+          <input type="number" id="valorMilhas" class="form-control" placeholder="1.150" 
+                 [(ngModel)]="flight.valorMilhas" name="valorMilhas" disabled>
+        </div>
+
+        <!-- Total de Poltronas -->
+        <div class="col-md-4">
+          <label for="totalPoltronas" class="form-label"><strong>Total de Poltronas:</strong></label>
+          <input type="number" id="totalPoltronas" class="form-control" placeholder="70" 
+                 [(ngModel)]="flight.totalPoltronas" name="totalPoltronas" required>
+          <div *ngIf="flightForm.submitted && !flight.totalPoltronas" class="text-danger">
+            Total de poltronas é obrigatório.
+          </div>
+        </div>
+
+        <!-- Poltronas Ocupadas -->
+        <!-- <div class="col-md-4">
+          <label for="qtdPoltronasOcupadas" class="form-label"><strong>Poltronas Ocupadas:</strong></label>
+          <input type="number" id="qtdPoltronasOcupadas" class="form-control" placeholder="0" 
+                 [(ngModel)]="flight.qtdPoltronasOcupadas" name="qtdPoltronasOcupadas">
+        </div> -->
+
+        <!-- Status do Voo -->
+        <!-- <div class="col-md-4">
+          <label for="statusVoo" class="form-label"><strong>Status do Voo:</strong></label>
+          <select id="statusVoo" class="form-control" [(ngModel)]="flight.statusVoo" name="statusVoo" required>
+            <option value="Pendente">Pendente</option>
+            <option value="Confirmado">Confirmado</option>
+            <option value="Cancelado">Cancelado</option>
+          </select>
+          <div *ngIf="flightForm.submitted && !flight.statusVoo" class="text-danger">
+            Status do voo é obrigatório.
+          </div>
+        </div> -->
+
+        <!-- Botões -->
+        <div class="col-12 d-flex justify-content-center mt-3">
+          <button type="button" class="btn btn-danger mx-2" >Cancelar</button>
+          <button type="submit" class="btn btn-success mx-2" (click)="createFlight()">Confirmar</button>
+        </div>
+      </form>
     </div>
   </div>
-  
+</div>

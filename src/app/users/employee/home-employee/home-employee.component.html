@@ -35,7 +35,7 @@
                           </tr>
                       </thead>
                       <tbody class="align-middle text-center">
-                          <tr *ngFor="let flight of listFlight">
+                          <tr *ngFor="let flight of filteredFlights">
                               <td>{{flight.dataVoo | date: 'dd/MM/yyyy HH:mm' }}</td>
                               <td>{{flight.aeroportoOrigem}}</td>
                               <td>{{flight.aeroportoDestino}}</td>

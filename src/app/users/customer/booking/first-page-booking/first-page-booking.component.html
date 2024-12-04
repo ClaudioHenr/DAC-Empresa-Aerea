@@ -27,7 +27,7 @@
                             <label for="aeroportoOrigem"><strong>Aeroporto Origem:</strong></label>
                             <select id="aeroportoOrigem" class="form-control" [(ngModel)]="flight.aeroportoOrigem" name="aeroportoOrigem" required>
                               <option value="" disabled selected>Escolha o Aeroporto de Origem</option>
-                              <option *ngFor="let aeroporto of listaAeroportos" [value]="aeroporto.codigo_aeroporto">
+                              <option *ngFor="let aeroporto of listaAeroportos" [value]="aeroporto.nome">
                                 {{ aeroporto.nome }} - {{ aeroporto.cidade }}/{{ aeroporto.estado }}
                               </option>
                             </select>
@@ -37,7 +37,7 @@
                             <label for="aeroportoDestino"><strong>Aeroporto Destino:</strong></label>
                             <select id="aeroportoDestino" class="form-control" [(ngModel)]="flight.aeroportoDestino" name="aeroportoDestino" required>
                               <option value="" disabled selected>Escolha o Aeroporto de Destino</option>
-                              <option *ngFor="let aeroporto of listaAeroportos" [value]="aeroporto.codigo_aeroporto">
+                              <option *ngFor="let aeroporto of listaAeroportos" [value]="aeroporto.nome">
                                 {{ aeroporto.nome }} - {{ aeroporto.cidade }}/{{ aeroporto.estado }}
                               </option>
                             </select>
@@ -59,10 +59,10 @@
                             </thead>
                             <tbody class="align-middle text-center">
                                 <tr *ngFor="let flight of listaVoos">
-                                    <td>{{flight.dataVoo}}</td>
+                                    <td>{{flight.dataVoo | date: 'dd/MM/yyyy HH:mm'}}</td>
                                     <td>{{flight.aeroportoOrigem}}</td>
                                     <td>{{flight.aeroportoDestino}}</td>
-                                    <td><button class="btn btn-primary">Visualizar</button></td>
+                                    <td><button class="btn btn-primary" (click)="chooseFlight(flight)">Visualizar</button></td>
                                 </tr>
                             </tbody>
                         </table>

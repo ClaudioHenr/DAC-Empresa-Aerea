@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarCustomerComponent } from "../../../../layout/navbar-customer/navbar-customer.component";
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { LoginService } from '../../../../authentication/login/services/login.service';
 import { Airport } from '../../../../../shared/models/Airport.model';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { Flight } from '../../../../../shared/models/Flight.model';
 import { FormsModule } from '@angular/forms';
+import { FlightSelectionService } from '../services/flight-selection.service';
 
 @Component({
   selector: 'app-first-page-booking',
@@ -15,6 +16,7 @@ import { FormsModule } from '@angular/forms';
     NavbarCustomerComponent,
     FormsModule,
     NgFor,
+    CommonModule,
     RouterLink
   ],
   templateUrl: './first-page-booking.component.html',
@@ -34,7 +36,11 @@ export class FirstPageBookingComponent implements OnInit {
     this.currentScreen = screenNumber;
   }
 
-  constructor(private http: HttpClient, private loginService: LoginService) {}
+  constructor(private http: HttpClient, 
+    private loginService: LoginService, 
+    private flightSelectionService: FlightSelectionService,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.fetchAirports();
@@ -48,11 +54,24 @@ export class FirstPageBookingComponent implements OnInit {
       console.error("Erro ao buscar aeroportos:", error);
     });
   }
-
+  
   searchFlights() {
+    console.log(this.flight)
     this.http.post<any>('http://localhost:3000/flights/travels', this.flight).subscribe(data => {
       console.log("Voos recebidos:", data.travels);
-      this.listaVoos = data.travels;
+          // Filtra os voos para incluir apenas da data atual para frente
+      const now = new Date();
+      this.listaVoos = data.travels.filter((travel: Flight) => {
+        if (travel.dataVoo) {
+          const dataVoo: Date = new Date(travel.dataVoo);
+          return (
+            dataVoo.getFullYear() > now.getFullYear() ||
+            (dataVoo.getFullYear() === now.getFullYear() && dataVoo.getMonth() > now.getMonth()) ||
+            (dataVoo.getFullYear() === now.getFullYear() && dataVoo.getMonth() === now.getMonth() && dataVoo.getDate() >= now.getDate())
+          );
+        }
+        return false
+    });
     }, error => {
       console.error("Erro ao buscar voos:", error);
     });
@@ -60,11 +79,20 @@ export class FirstPageBookingComponent implements OnInit {
 
   fetchCustomerData() {
     const user = this.loginService.getLocalStorage("user")
-    console.log(user)
-    const customerId = 'e1c347cc-056b-4a76-b371-262eae7140b0'; // Replace with actual customer ID
-    // const customerId = user.id;
-    this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
-      this.milesBalance = data.miles;
-    });
+    if (user?.id) {
+      this.http.get<any>(`http://localhost:3000/customers/${user.id}`).subscribe(data => {
+        this.milesBalance = data.miles;
+      }, error => {
+        console.error("Erro ao buscar dados do cliente:", error);
+      });
+    } else {
+      console.error("Usuário não encontrado no localStorage.");
+    }
+  }
+
+  chooseFlight(flight: Flight) {
+    console.log("Voo selecionado:", flight);
+    this.flightSelectionService.setFlight(flight);
+    this.router.navigate(['booking/second-page']);
   }
 }

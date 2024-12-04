@@ -6,6 +6,7 @@ import { BoardingModalComponent } from "../modals/boarding-modal/boarding-modal.
 import { ModalConfirmFlightComponent } from "../modals/modal-confirm-flight/modal-confirm-flight.component";
 import { ModalCancelFlightComponent } from "../modals/modal-cancel-flight/modal-cancel-flight.component";
 import { RouterLink } from '@angular/router';
+import { HomeEmployeeService } from './services/home-employee.service';
 
 @Component({
   selector: 'app-home-employee',
@@ -23,23 +24,25 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home-employee.component.css'
 })
 export class HomeEmployeeComponent {
-  listFlight: Flight[] = [
-    // { cod: "1234", dateDeparture: new Date(), departureAirport: "AeroportoA", destinationAirport: "AeroportoB", priceBooking: 2000, totalSeats: 100, occupiedSeats: 75 },
-    // { cod: "5678", dateDeparture: new Date('2024-09-18T14:30:00'), departureAirport: "AeroportoC", destinationAirport: "AeroportoD", priceBooking: 1500, totalSeats: 150, occupiedSeats: 80 },
-    // { cod: "9101", dateDeparture: new Date('2024-09-20T08:30:00'), departureAirport: "AeroportoE", destinationAirport: "AeroportoF", priceBooking: 1800, totalSeats: 120, occupiedSeats: 100 },
-    // { cod: "9101", dateDeparture: new Date('2024-09-18T08:00:00'), departureAirport: "AeroportoE", destinationAirport: "AeroportoF", priceBooking: 1800, totalSeats: 120, occupiedSeats: 100 },
-    // { cod: "9101", dateDeparture: new Date('2024-09-20T08:00:00'), departureAirport: "AeroportoE", destinationAirport: "AeroportoF", priceBooking: 1800, totalSeats: 120, occupiedSeats: 100 },
-    // { cod: "9101", dateDeparture: new Date('2024-09-21T08:00:00'), departureAirport: "AeroportoE", destinationAirport: "AeroportoF", priceBooking: 1800, totalSeats: 120, occupiedSeats: 100 },
-    // { cod: "1121", dateDeparture: new Date('2024-09-22T10:00:00'), departureAirport: "AeroportoG", destinationAirport: "AeroportoH", priceBooking: 2200, totalSeats: 180, occupiedSeats: 150 },
-    // { cod: "1121", dateDeparture: new Date('2024-09-21T10:00:00'), departureAirport: "AeroportoG", destinationAirport: "AeroportoH", priceBooking: 2200, totalSeats: 180, occupiedSeats: 150 },
-    // { cod: "1121", dateDeparture: new Date('2024-09-20T10:00:00'), departureAirport: "AeroportoG", destinationAirport: "AeroportoH", priceBooking: 2200, totalSeats: 180, occupiedSeats: 150 },
-    // { cod: "1121", dateDeparture: new Date('2024-09-16T10:00:00'), departureAirport: "AeroportoG", destinationAirport: "AeroportoH", priceBooking: 2200, totalSeats: 180, occupiedSeats: 150 },
-    // { cod: "3141", dateDeparture: new Date('2024-09-15T16:00:00'), departureAirport: "AeroportoI", destinationAirport: "AeroportoJ", priceBooking: 2500, totalSeats: 200, occupiedSeats: 190 }
-  ]
+  listFlight: Flight[] = []
   filteredFlights: Flight[] = []
 
+  constructor( private homeEmployeeService: HomeEmployeeService ) {}
+
   ngOnInit(): void {
-    this.handleFlights()
+    this.fetchFlights()
+  }
+
+  async fetchFlights() {
+    try {
+      const flights = await this.homeEmployeeService.getFlights();
+      console.log("Voos: ", flights.data.flights)
+      this.listFlight = flights.data.flights
+      this.handleFlights()
+      console.log(this.filteredFlights)
+    } catch (error: any) {
+      throw error
+    } 
   }
 
   handleFlights() {
@@ -49,7 +52,8 @@ export class HomeEmployeeComponent {
     console.log("Data e hora 48 horas adiante:", hoursAhead.toLocaleString())
     this.filteredFlights = this.listFlight.filter(flight => {
       if (flight.dataVoo) {
-        return flight.dataVoo < hoursAhead && flight.dataVoo > now;
+        let flightDate = new Date(flight.dataVoo);
+        return flightDate < hoursAhead && flightDate > now;
       }
       return false;
     });

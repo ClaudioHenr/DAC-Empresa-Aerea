@@ -1,6 +1,6 @@
 export class Airport {
-    cod?: string;
-    name?: string;
-    city?: string;
-    state?: string;
+    codigo_aeroporto?: string;
+    nome?: string;
+    cidade?: string;
+    estado?: string;
 }

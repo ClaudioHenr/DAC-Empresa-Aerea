@@ -24,14 +24,27 @@
                 <div>
                     <div class="d-flex justify-content-center" style="gap: 20px; margin-bottom: 20px;">
                         <div>
-                            <input type="text" class="input-voa" placeholder="Aeroporto Origem">
-                        </div>
-                        <div>
-                            <input type="text" class="input-voa" placeholder="Aeroporto Destino">
-                        </div>
-                        <div>
-                            <button class="btn btn-success" style="padding: 10px; width: 200px;" [routerLink]="['/booking/second-page']">Buscar</button>
-                        </div>
+                            <label for="aeroportoOrigem"><strong>Aeroporto Origem:</strong></label>
+                            <select id="aeroportoOrigem" class="form-control" [(ngModel)]="flight.aeroportoOrigem" name="aeroportoOrigem" required>
+                              <option value="" disabled selected>Escolha o Aeroporto de Origem</option>
+                              <option *ngFor="let aeroporto of listaAeroportos" [value]="aeroporto.nome">
+                                {{ aeroporto.nome }} - {{ aeroporto.cidade }}/{{ aeroporto.estado }}
+                              </option>
+                            </select>
+                          </div>
+                        
+                          <div>
+                            <label for="aeroportoDestino"><strong>Aeroporto Destino:</strong></label>
+                            <select id="aeroportoDestino" class="form-control" [(ngModel)]="flight.aeroportoDestino" name="aeroportoDestino" required>
+                              <option value="" disabled selected>Escolha o Aeroporto de Destino</option>
+                              <option *ngFor="let aeroporto of listaAeroportos" [value]="aeroporto.nome">
+                                {{ aeroporto.nome }} - {{ aeroporto.cidade }}/{{ aeroporto.estado }}
+                              </option>
+                            </select>
+                          </div>
+                        <!-- <div> -->
+                            <button class="btn btn-success" style="padding: 10px; width: 200px;" (click)="searchFlights()">Buscar</button>
+                        <!-- </div> -->
                     </div>
 
                     <div class="rounded border border-dark">
@@ -45,23 +58,11 @@
                                 </tr>
                             </thead>
                             <tbody class="align-middle text-center">
-                                <tr>
-                                    <td>26/09/2024<br>13:55</td>
-                                    <td>CWB<br>Afonso Pena</td>
-                                    <td>GIG<br>Galeão</td>
-                                    <td><button class="btn btn-primary">Visualizar</button></td>
-                                </tr>
-                                <tr>
-                                    <td>26/09/2024<br>13:55</td>
-                                    <td>CWB<br>Afonso Pena</td>
-                                    <td>GIG<br>Galeão</td>
-                                    <td><button class="btn btn-primary">Visualizar</button></td>
-                                </tr>
-                                <tr>
-                                    <td>26/09/2024<br>13:55</td>
-                                    <td>CWB<br>Afonso Pena</td>
-                                    <td>GIG<br>Galeão</td>
-                                    <td><button class="btn btn-primary">Visualizar</button></td>
+                                <tr *ngFor="let flight of listaVoos">
+                                    <td>{{flight.dataVoo | date: 'dd/MM/yyyy HH:mm'}}</td>
+                                    <td>{{flight.aeroportoOrigem}}</td>
+                                    <td>{{flight.aeroportoDestino}}</td>
+                                    <td><button class="btn btn-primary" (click)="chooseFlight(flight)">Visualizar</button></td>
                                 </tr>
                             </tbody>
                         </table>

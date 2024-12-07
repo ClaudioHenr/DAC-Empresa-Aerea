@@ -6,7 +6,7 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class RegisterService {
-  url = 'http://localhost:3000/customers'
+  url = 'http://localhost:3000/customers/create'
 
   constructor() { }
 

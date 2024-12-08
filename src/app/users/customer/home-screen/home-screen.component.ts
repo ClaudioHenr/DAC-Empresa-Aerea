@@ -27,6 +27,7 @@ import { CustomerHomeService } from './services/customer-home.service';
 export class HomeScreenComponent implements OnInit {
   listFlight: Flight[] = [];
   milesBalance: number = 0;
+  customerName: string = '';
 
   constructor(private http: HttpClient, private loginService: LoginService, private customerHomeService: CustomerHomeService) {}
 
@@ -36,12 +37,14 @@ export class HomeScreenComponent implements OnInit {
   }
 
   getCustomerData() {
-    const user = this.loginService.getLocalStorage("user")
-    this.milesBalance = user.miles
-    // const customerId = 'ad237302-4b0c-48bf-abd9-d01a0c6e8a2e'; // Replace with actual customer ID
-    // this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
-    //   this.milesBalance = data.miles;
-    // });
+    const user = JSON.parse(localStorage.getItem("user") || '{}');
+    if (user && user.name && user.miles !== undefined) {
+      this.customerName = user.name;
+      this.milesBalance = user.miles;
+      console.log(this.milesBalance)
+    } else {
+      console.error("Usuário não encontrado no localStorage.");
+    }
   }
 
   async fetchFlights() {

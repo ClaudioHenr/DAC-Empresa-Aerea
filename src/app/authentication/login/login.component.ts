@@ -32,6 +32,7 @@ export class LoginComponent {
       console.log("Resultado da autenticação: ", result);
       this.loginService.setLocalStorage("user", result.data.user)
       this.loginService.setLocalStorage("auth", result.data.auth)
+      this.loginService.setLocalStorage("token", result.data.token) 
       this.handleLogin(result)
     } catch (error: any) {
       console.error("Erro na autenticação: ", error);

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CreateBooking } from '../../../../../shared/models/CreateBooking';
+import { CreateBooking } from '../../../../../shared/models/CreateBooking.model';
 import axios from 'axios';
 
 @Injectable({

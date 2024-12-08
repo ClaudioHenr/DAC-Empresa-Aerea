@@ -37,20 +37,18 @@
                             </tr>
                         </thead>
                         <tbody class="align-middle text-center">
-                            <tr *ngFor="let flight of listFlight">
-                                <td>{{flight.dataVoo | date: 'dd/MM/yyyy HH:mm' }}</td>
-                                <td>{{flight.aeroportoOrigem}}</td>
-                                <td>{{flight.aeroportoDestino}}</td>
+                            <tr *ngFor="let booking of listBooking" [hidden]="booking.status !== 'RESERVADA'" >
+                                <td>{{booking.timeBooking| date: 'dd/MM/yyyy HH:mm' }}</td>
+                                <td>{{booking.flightDetails?.aeroportoOrigem}}</td>
+                                <td>{{booking.flightDetails?.aeroportoDestino}}</td>
+
                                 <td>
                                     <span class="text-primary fw-medium" [routerLink]="['/view-booking']">Visualizar</span>
                                     <br>
                                     <!--Acionar modal cancel reserve-->
-                                    <span class="text-danger fw-medium" data-bs-toggle="modal" data-bs-target="#cancelReserveModal">Cancelar</span>
+                                    <span *ngIf="booking.status !== 'CANCELADA'" class="text-danger fw-medium" data-bs-toggle="modal" data-bs-target="#cancelReserveModal">Cancelar</span>
                                 </td>
-                                <td class="text-warning fw-medium">
-                                    <span *ngIf="flight.statusVoo == 'Realizado'" class="text-success fw-medium">{{flight.statusVoo}}</span>
-                                    <span *ngIf="flight.statusVoo == 'Cancelado'" class="text-danger fw-medium">{{flight.statusVoo}}</span>
-                                </td>
+                                <td [ngClass]="getStatusClass(booking.status)">{{ booking.status }}</td>
                             </tr>
                         </tbody>
                     </table>

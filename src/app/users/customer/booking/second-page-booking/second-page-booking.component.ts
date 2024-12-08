@@ -7,8 +7,9 @@ import { Flight } from '../../../../../shared/models/Flight.model';
 import { FlightSelectionService } from '../services/flight-selection.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { CreateBooking } from '../../../../../shared/models/CreateBooking';
+import { CreateBooking } from '../../../../../shared/models/CreateBooking.model';
 import { CreateBookingService } from '../services/create-booking.service';
+import { StatusCreateBookingService } from '../services/status-create-booking.service';
 
 @Component({
   selector: 'app-second-page-booking',
@@ -27,6 +28,7 @@ export class SecondPageBookingComponent implements OnInit {
   selectedFlight: Flight | null = null;
   createBooking: CreateBooking = new CreateBooking();
   milesBalance: number = 0;
+  user = this.loginService.getLocalStorage("user")
 
   // Adicione métodos para mudar a tela, se necessário
   changeScreen(screenNumber: number) {
@@ -37,7 +39,8 @@ export class SecondPageBookingComponent implements OnInit {
     private loginService: LoginService,
     private flightSelectionService: FlightSelectionService,
     private router: Router,
-    private createBookingService: CreateBookingService
+    private createBookingService: CreateBookingService,
+    private statusCreateBooking: StatusCreateBookingService
   ) {}
 
   ngOnInit() {
@@ -62,28 +65,34 @@ export class SecondPageBookingComponent implements OnInit {
   }
 
   fetchCustomerData() {
-    const user = this.loginService.getLocalStorage("user")
-    // console.log(user)
+    // Valor teste
     const customerId = 'e1c347cc-056b-4a76-b371-262eae7140b0'; // Replace with actual customer ID
-    // const customerId = user.id;
+    // const customerId = this.user.id;
     this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
       this.milesBalance = data.miles;
     });
+    // Valor teste
     this.milesBalance = 1000
   }
 
   async submitBooking() {
     try {
+      // Setar o id do usuário para a criação da reserva
+      this.createBooking.idUser = this.user.id
       this.createBooking.codFlight = this.selectedFlight?.codigoVoo
       this.createBooking.idUser = 'e1c347cc-056b-4a76-b371-262eae7140b0'
       console.log("Selected flight: ", this.selectedFlight)
       console.log("CreateBoking: ", this.createBooking)
+      
+      this.statusCreateBooking.setStatusCreateBooking(true)
+      this.router.navigate(['/booking/last-page'])
+
       const result = await this.createBookingService.registerBooking(this.createBooking);
+      this.statusCreateBooking.setStatusCreateBooking(true)
     } catch (error: any) {
       console.error(error.response.data.message)
-    }
-    
-    // this.router.navigate(['/booking/last-page'])
+    }   
+    this.router.navigate(['/booking/last-page'])
   }
 
 }

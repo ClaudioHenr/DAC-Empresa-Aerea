@@ -10,4 +10,5 @@ import { Component, Input } from '@angular/core';
 export class ReusableModalComponent {
   @Input() modalId?: string
   @Input() title?: string
+
 }

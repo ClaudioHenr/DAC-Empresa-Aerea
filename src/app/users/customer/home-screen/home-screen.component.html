@@ -1,6 +1,6 @@
 <!--Modais-->
 <app-modal-buy-miles></app-modal-buy-miles>
-<app-modal-cancel-reserve></app-modal-cancel-reserve>
+<app-modal-cancel-reserve [selectedBooking]="selectedBooking"></app-modal-cancel-reserve>
 <!--Navbar-->
 <app-navbar-customer></app-navbar-customer>
 <!--Template principal da tela-->
@@ -43,10 +43,14 @@
                                 <td>{{booking.flightDetails?.aeroportoDestino}}</td>
 
                                 <td>
-                                    <span class="text-primary fw-medium" [routerLink]="['/view-booking']">Visualizar</span>
-                                    <br>
+                                    <!-- <span class="text-primary fw-medium" [routerLink]="['/view-booking']">Visualizar</span> -->
+                                    <!-- <br> -->
                                     <!--Acionar modal cancel reserve-->
-                                    <span *ngIf="booking.status !== 'CANCELADA'" class="text-danger fw-medium" data-bs-toggle="modal" data-bs-target="#cancelReserveModal">Cancelar</span>
+                                    <span *ngIf="booking.status !== 'CANCELADA'" class="text-danger fw-medium" 
+                                    data-bs-toggle="modal" 
+                                    data-bs-target="#cancelReserveModal"                                    
+                                    (click)="setSelectedBooking(booking)">
+                                    Cancelar</span>
                                 </td>
                                 <td [ngClass]="getStatusClass(booking.status)">{{ booking.status }}</td>
                             </tr>

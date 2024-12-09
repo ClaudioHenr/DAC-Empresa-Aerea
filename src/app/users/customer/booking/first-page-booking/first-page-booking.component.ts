@@ -16,8 +16,7 @@ import { FlightSelectionService } from '../services/flight-selection.service';
     NavbarCustomerComponent,
     FormsModule,
     NgFor,
-    CommonModule,
-    RouterLink
+    CommonModule
   ],
   templateUrl: './first-page-booking.component.html',
   styleUrl: './first-page-booking.component.css'

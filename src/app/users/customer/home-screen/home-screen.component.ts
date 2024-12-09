@@ -4,7 +4,6 @@ import { ModalBuyMilesComponent } from '../modals/modal-buy-miles/modal-buy-mile
 import { ModalCancelReserveComponent } from '../modals/modal-cancel-reserve/modal-cancel-reserve.component';
 import { CommonModule, NgFor, NgIf } from '@angular/common';
 import { NavbarCustomerComponent } from "../../../layout/navbar-customer/navbar-customer.component";
-import { RouterLink } from '@angular/router';
 import { LoginService } from '../../../authentication/login/services/login.service';
 import { ViewBookingService } from '../view-booking/services/view-booking.service';
 import { BookingView } from '../../../../shared/models/BookingView.model';
@@ -13,7 +12,6 @@ import { BookingView } from '../../../../shared/models/BookingView.model';
   selector: 'app-home-screen',
   standalone: true,
   imports: [
-    RouterLink,
     NgFor,
     NgIf,
     CommonModule,
@@ -28,6 +26,7 @@ export class HomeScreenComponent implements OnInit {
   listBooking: BookingView[] = [];
   milesBalance: number = 0;
   user = this.loginService.getLocalStorage("user")
+  selectedBooking: any;
 
   constructor(
     private http: HttpClient, 
@@ -53,6 +52,10 @@ export class HomeScreenComponent implements OnInit {
     const customerId = this.user.id
     const result = await this.viewBookingService.getBookings("e1c347cc-056b-4a76-b371-262eae7140b0")
     this.listBooking = result.data.bookings    
+  }
+
+  setSelectedBooking(booking: any): void {
+    this.selectedBooking = booking;
   }
 
   getStatusClass(status: string | undefined): string {

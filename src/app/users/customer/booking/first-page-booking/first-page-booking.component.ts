@@ -63,10 +63,10 @@ export class FirstPageBookingComponent implements OnInit {
       this.listaVoos = data.travels.filter((travel: Flight) => {
         if (travel.dataVoo) {
           const dataVoo: Date = new Date(travel.dataVoo);
+          const nowTimestamp: Number = now.getTime();
+          const dataFlightTimestamp: Number = dataVoo.getTime()
           return (
-            dataVoo.getFullYear() > now.getFullYear() ||
-            (dataVoo.getFullYear() === now.getFullYear() && dataVoo.getMonth() > now.getMonth()) ||
-            (dataVoo.getFullYear() === now.getFullYear() && dataVoo.getMonth() === now.getMonth() && dataVoo.getDate() >= now.getDate())
+            dataFlightTimestamp >= nowTimestamp
           );
         }
         return false
@@ -75,6 +75,7 @@ export class FirstPageBookingComponent implements OnInit {
       console.error("Erro ao buscar voos:", error);
     });
   }
+
 
   fetchCustomerData() {
     const user = this.loginService.getLocalStorage("user")

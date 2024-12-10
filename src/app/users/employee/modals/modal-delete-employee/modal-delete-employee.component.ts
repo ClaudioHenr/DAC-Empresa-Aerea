@@ -16,7 +16,7 @@ export class ModalDeleteEmployeeComponent {
 
   async deleteEmployee() {
     try {
-      const response = await axios.delete(`http://localhost:3000/employees/${this.employeeId}`);
+      const response = await axios.put(`http://localhost:3000/employees/delete/${this.employeeId}`);
       if (response.status === 200) {
         window.location.reload();
       }

@@ -11,7 +11,8 @@ interface Employee {
   name: string;
   cpf: string;
   email: string;
-  phone: string;
+  number: string;
+  status: string;
 }
 
 @Component({
@@ -39,10 +40,18 @@ export class ListEmployeeComponent implements OnInit {
   }
 
   fetchEmployees(): void {
-    this.http.get<{ Employees: Employee[] }>('http://localhost:3000/employees')
+    this.http.get<{ employees: Employee[] }>('http://localhost:3000/employees')
       .subscribe(data => {
-        this.employees = data.Employees;
+        this.employees = data.employees;
       });
+  }
+
+  getDeactivatedEmployees(): Employee[] {
+    return this.employees.filter(employee => employee.status === 'Desativado');
+  }
+
+  getActivatedEmployees(): Employee[] {
+    return this.employees.filter(employee => employee.status === 'Ativado');
   }
 
   setEmployeeId(id: string) {

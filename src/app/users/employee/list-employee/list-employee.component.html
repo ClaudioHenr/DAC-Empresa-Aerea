@@ -4,23 +4,23 @@
 <app-modal-update-employee [employeeId]="selectedEmployeeId"></app-modal-update-employee>
 <app-modal-delete-employee [employeeId]="selectedEmployeeId"></app-modal-delete-employee>
 <!--Template principal da tela-->
-<div class="d-flex align-items-center justify-content-center vh-100 bg-orange flex-column">
+<div class="d-flex align-items-center justify-content-center vh-200 bg-orange flex-column">
   <div class="w-100 h-90 padding-2">
-      <div class="bg-white w-100 h-100 rounded-3">
+      <div class="bg-white w-100 h-200 rounded-3">
           <div class="w-100 h-10">
-              <div class="d-flex justify-content-between align-items-center h-100 px-3">
+              <div class="d-flex justify-content-between align-items-center h-300 px-3">
                   <div>
                       <h3 class="m-0">Lista de Funcionários</h3>
                   </div>
                   <!--Ir para tela de cadastro de voo-->
                   <div>
-                    <a class="btn btn-orange text-white h-25 px-3" data-bs-toggle="modal" data-bs-target="#registerEmployeeModal">Inserir</a>
+                    <a class="btn btn-orange text-white h-25 px-3" data-bs-toggle="modal" data-bs-target="#createEmployeeModal">Inserir</a>
                   </div>
               </div>
           </div>
           <div class="w-100 h-90 px-3">
-              <div class="rounded border border-dark">
-                  <table class="table table-hover table-bordered m-0 border-dark">
+              <div class="">
+                  <table class="table table-hover table-bordered m-0 border-dark mb-3">
                       <thead class="align-middle text-center">
                           <tr>
                               <th class="text-white bg-orange-darker">Nome</th>                                
@@ -31,20 +31,49 @@
                           </tr>
                       </thead>
                       <tbody class="align-middle text-center">
-                          <tr *ngFor="let employee of employees">
+                        <tr *ngFor="let employee of getActivatedEmployees()">
                               <td>{{ employee.name }}</td>
                               <td>{{ employee.cpf }}</td>
                               <td><a class="mail" href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
-                              <td>{{ employee.phone }}</td>
+                              <td>{{ employee.number }}</td>
                               <td>
                                   <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#updateEmployeeModal" (click)="setEmployeeId(employee.id)">Editar</button>
                                   <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteEmployeeModal" (click)="setEmployeeId(employee.id)">Remover</button>
                               </td>
                           </tr>
                       </tbody>
-                  </table>
+                  </table>                
               </div>
           </div>
+          <div class="w-100 h-10">
+            <div class="d-flex justify-content-between align-items-center h-100 px-3">
+                <div>
+                    <h3 class="m-0">Lista de Funcionários Desativados</h3>
+                </div>
+            </div>
+          </div>
+          <div class="w-100 h-90 px-3">
+            <div>
+                <table class="table table-hover table-bordered m-0 border-dark">
+                    <thead class="align-middle text-center">
+                        <tr>
+                        <th class="text-white bg-orange-darker">Nome</th>
+                        <th class="text-white bg-orange-darker">CPF</th>
+                        <th class="text-white bg-orange-darker">Email</th>
+                        <th class="text-white bg-orange-darker">Telefone</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle text-center">
+                        <tr *ngFor="let employee of getDeactivatedEmployees()">
+                        <td>{{ employee.name }}</td>
+                        <td>{{ employee.cpf }}</td>
+                        <td><a class="mail" href="mailto:{{ employee.email }}">{{ employee.email }}</a></td>
+                        <td>{{ employee.number }}</td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+         </div>
       </div>
   </div>
 </div>

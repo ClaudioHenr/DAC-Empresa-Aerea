@@ -63,10 +63,23 @@ export class ModalBuyMilesComponent implements OnInit {
     const token = this.storageService.getItem("token");
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     this.http.patch(`http://localhost:3000/customers/${this.customerId}/miles/buy`, payload, { headers }).subscribe(response => {
-      this.fetchCustomerMiles(); // Update the current balance after purchase
+      this.fetchCustomerMiles();
+      this.closeModal(); // Update the current balance after purchase
+      alert('Milhas compradas com sucesso!');
     }, error => {
       console.error("Erro ao confirmar compra:", error);
     });
     console.log('Compra confirmada');
+  }
+
+  closeModal(): void {
+    const modalElement = document.getElementById('buyMilesModal');
+    if (modalElement) {
+      modalElement.style.display = 'none';
+      const backdrop = document.querySelector('.modal-backdrop');
+      if (backdrop) {
+        backdrop.remove();
+      }
+    }
   }
 }

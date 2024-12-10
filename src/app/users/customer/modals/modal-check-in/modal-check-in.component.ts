@@ -1,13 +1,13 @@
-import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { ReusableModalComponent } from "../../../../../shared/modals/base/reusable-modal/reusable-modal.component";
-import { Flight } from '../../../../../shared/models/Flight.model';
+import { BookingView } from '../../../../../shared/models/BookingView.model';
+import { CheckinBookingService } from './services/checkin-booking.service';
 
 @Component({
   selector: 'app-modal-check-in',
   standalone: true,
   imports: [
-    NgFor,
     CommonModule,
     ReusableModalComponent
 ],
@@ -16,20 +16,13 @@ import { Flight } from '../../../../../shared/models/Flight.model';
 })
 
 export class ModalCheckInComponent {
-  flights: Flight[] = [
-    // { cod: "1234", dateDeparture: new Date(), departureAirport: "AeroportoA", destinationAirport: "AeroportoB", priceBooking: 2000, totalSeats: 100, occupiedSeats: 75 },
-    // { cod: "5678", dateDeparture: new Date('2024-09-18T14:30:00'), departureAirport: "AeroportoC", destinationAirport: "AeroportoD", priceBooking: 1500, totalSeats: 150, occupiedSeats: 80 },
-    // { cod: "9101", dateDeparture: new Date('2024-09-20T08:30:00'), departureAirport: "AeroportoE", destinationAirport: "AeroportoF", priceBooking: 1800, totalSeats: 120, occupiedSeats: 100 },
-    // { cod: "9101", dateDeparture: new Date('2024-09-18T08:00:00'), departureAirport: "AeroportoE", destinationAirport: "AeroportoF", priceBooking: 1800, totalSeats: 120, occupiedSeats: 100 }
-  ]
-  // @Input() flights: { 
-  //   origin: string; 
-  //   destination: string; 
-  //   time: string 
-  // }[] = [];
-  // @Output() closeModalEvent = new EventEmitter<void>();
-  // @Output() checkInEvent = new EventEmitter<void>();
+  @Input() selectedBooking?: BookingView | null = null;
 
-  checkIn() {
+  constructor(private checkinBookingService: CheckinBookingService ) {}
+
+  async submitCheckInBooking() {
+    const result = await this.checkinBookingService.checkInBooking(this.selectedBooking?.id);
+    alert(`${result.data.message}`)
   }
+
 }

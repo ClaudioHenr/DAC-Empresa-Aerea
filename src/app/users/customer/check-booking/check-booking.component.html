@@ -1,5 +1,5 @@
 <!--Modais-->
-<app-modal-check-in></app-modal-check-in>
+<app-modal-check-in [selectedBooking]="selectedBooking" ></app-modal-check-in>
 <!--Navbar-->
 <app-navbar-customer></app-navbar-customer>
 <!--Template principal-->
@@ -20,18 +20,25 @@
                 <div>
                     <div class="d-flex justify-content-center" style="gap: 20px; margin-bottom: 20px;">
                         <div>
-                            <input type="text" class="input-voa" placeholder="#AAA1111">
+                            <input type="text" 
+                            class="input-voa" 
+                            placeholder="AAA111"
+                            [(ngModel)]="codBookingToSearch"
+                            >
                         </div>
                         <div>
-                            <button class="btn btn-success" style="padding: 10px; width: 200px;">Buscar</button>
+                            <button class="btn btn-success" 
+                            style="padding: 10px; width: 200px;"
+                            (click)="filterBookingByCod()"
+                            >Buscar</button>
                         </div>
                     </div>
                     <div>
                         <h3 class="m-0">Mostra as informações após buscar</h3>
                     </div>
                     <div class="d-flex justify-content-end mb-3">
-                        <button class="btn btn-danger me-2" style="padding: 10px; width: 150px;">Cancelar</button>
-                        <button class="btn btn-primary" style="padding: 10px; width: 150px;" data-bs-toggle="modal" data-bs-target="#checkInModal">Check-in</button>
+                        <!-- <button class="btn btn-danger me-2" style="padding: 10px; width: 150px;">Cancelar</button> -->
+                        <!-- <button class="btn btn-primary" style="padding: 10px; width: 150px;" data-bs-toggle="modal" data-bs-target="#checkInModal">Check-in</button> -->
                     </div>
                     
                     <div class="rounded border border-dark">
@@ -45,38 +52,25 @@
                                     <th class="text-white bg-orange-darker">Valor (R$)</th>
                                     <th class="text-white bg-orange-darker">Milhas</th>
                                     <th class="text-white bg-orange-darker">Status</th>
+                                    <th class="text-white bg-orange-darker">Ação</th>
                                 </tr>
                             </thead>
                             <tbody class="align-middle text-center">
-                                <tr>
-                                    <td>26/09/2024<br>13:55</td>
-                                    <td>CWB<br>#AAA1111</td>
-                                    <td>CWB<br>Afonso Pena</td>
-                                    <td>GIG<br>Galeão</td>
-                                    <td>1,112.00</td>
-                                    <td>556</td>
-                                    <td class="text-warning fw-medium">Reservada</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>26/09/2024<br>13:55</td>
-                                    <td>CWB<br>#AAA1111</td>
-                                    <td>CWB<br>Afonso Pena</td>
-                                    <td>GIG<br>Galeão</td>
-                                    <td>1,112.00</td>
-                                    <td>556</td>
-                                    <td class="text-warning fw-medium">Reservada</td>
-                                    
-                                </tr>
-                                <tr>
-                                    <td>26/09/2024<br>13:55</td>
-                                    <td>CWB<br>#AAA1111</td>
-                                    <td>CWB<br>Afonso Pena</td>
-                                    <td>GIG<br>Galeão</td>
-                                    <td>1,112.00</td>
-                                    <td>556</td>
-                                    <td class="text-warning fw-medium">Reservada</td>
-                                    
+                                <tr *ngFor="let booking of bookingFound">
+                                    <td>{{booking.timeBooking| date: 'dd/MM/yyyy HH:mm' }}</td>
+                                    <td>{{booking.codBooking}}</td>
+                                    <td>{{booking.flightDetails?.aeroportoOrigem}}</td>
+                                    <td>{{booking.flightDetails?.aeroportoDestino}}</td>
+                                    <td>{{booking.flightDetails?.valorPassagem}}</td>
+                                    <td>{{booking.flightDetails?.valorMilhas}}</td>
+                                    <td [ngClass]="getStatusClass(booking.status)">{{ booking.status }}</td>
+                                    <td>
+                                        <button class="btn btn-primary" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#checkInModal"
+                                        (click)="setSelectedBooking(booking)"
+                                        >Check-in</button>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

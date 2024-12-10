@@ -1,20 +1,10 @@
 <app-reusable-modal modalId="checkInModal" title="Realizar Check-in">
-    <div>
-        <div>
-            <p>Voos nas próximas 48h:</p>
-            <ul>
-                <li *ngFor="let flight of flights">
-                    {{ flight.aeroportoOrigem }} → {{ flight.aeroportoDestino }} - {{ flight.dataVoo| date: 'dd/MM/yyyy HH:mm' }}
-                </li>
-            </ul>
-        </div>
-    </div>
     <p>
         Ao clicar em Check-in você confirma que tem ciência da data e horário do seu voo.
     </p>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" (click)="checkIn()">Confirmar</button>
+        <button type="button" class="btn btn-primary" (click)="submitCheckInBooking()">Confirmar</button>
     </div>
 </app-reusable-modal>
 

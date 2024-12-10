@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { NavbarCustomerComponent } from '../../../layout/navbar-customer/navbar-customer.component';
 import { MilesService } from '../../../services/miles.service';
+import { StorageService } from '../../../services/storage.service';
 
 @Component({
   selector: 'app-extrato-milhas',
@@ -24,7 +25,7 @@ export class ExtratoComponent implements OnInit {
   purchaseHistory: any[] = [];
   usageHistory: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private storageService: StorageService) {}
 
   ngOnInit(): void {
     this.fetchCustomerData();
@@ -32,27 +33,38 @@ export class ExtratoComponent implements OnInit {
   }
 
   fetchCustomerData() {
-    const customerId = 'ad237302-4b0c-48bf-abd9-d01a0c6e8a2e'; // Replace with actual customer ID
-    this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
-      this.milesBalance = data.miles;
-    });
+    const user = this.storageService.getItem("user");
+    console.log(user);
+    if (user && user.id) {
+      const customerId = user.id;
+      this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
+        this.milesBalance = data.miles;
+      });
+    } else {
+      console.error("Usuário não encontrado no localStorage.");
+    }
   }
 
   fetchTransactions() {
-    const customerId = 'ad237302-4b0c-48bf-abd9-d01a0c6e8a2e'; // Replace with actual customer ID
-    this.http.get<any>(`http://localhost:3000/customers/${customerId}/transactions`).subscribe(data => {
-      this.purchaseHistory = data.filter((transaction: any) => transaction.type === 'ENTRADA').map((transaction: any) => ({
-        date: this.formatDate(transaction.transactionDate),
-        miles: transaction.miles,
-        amount: this.formatCurrency(transaction.miles * 5),
-        description: transaction.description
-      }));
-      this.usageHistory = data.filter((transaction: any) => transaction.type === 'SAIDA').map((transaction: any) => ({
-        date: this.formatDate(transaction.transactionDate),
-        miles: transaction.miles,
-        description: transaction.description
-      }));
-    });
+    const user = this.storageService.getItem("user");
+    if (user && user.id) {
+      const customerId = user.id;
+      this.http.get<any>(`http://localhost:3000/customers/${customerId}/transactions`).subscribe(data => {
+        this.purchaseHistory = data.filter((transaction: any) => transaction.type === 'ENTRADA').map((transaction: any) => ({
+          date: this.formatDate(transaction.transactionDate),
+          miles: transaction.miles,
+          amount: this.formatCurrency(transaction.miles * 5),
+          description: transaction.description
+        }));
+        this.usageHistory = data.filter((transaction: any) => transaction.type === 'SAIDA').map((transaction: any) => ({
+          date: this.formatDate(transaction.transactionDate),
+          miles: transaction.miles,
+          description: transaction.description
+        }));
+      });
+    } else {
+      console.error("Usuário não encontrado no localStorage.");
+    }
   }
 
   formatDate(dateString: string): string {

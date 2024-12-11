@@ -28,7 +28,8 @@ export class SecondPageBookingComponent implements OnInit {
   selectedFlight: Flight | null = null;
   createBooking: CreateBooking = new CreateBooking();
   milesBalance: number = 0;
-  user = this.loginService.getLocalStorage("user")
+  user = this.loginService.getLocalStorage("user");
+  customerId: string = ''; // Inicialize o customerId
 
   // Adicione métodos para mudar a tela, se necessário
   changeScreen(screenNumber: number) {
@@ -65,14 +66,12 @@ export class SecondPageBookingComponent implements OnInit {
   }
 
   fetchCustomerData() {
-    // Valor teste
-    const customerId = 'e1c347cc-056b-4a76-b371-262eae7140b0'; // Replace with actual customer ID
+    const user = this.loginService.getLocalStorage("user");
+    const customerId = user.id;
     // const customerId = this.user.id;
     this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
       this.milesBalance = data.miles;
     });
-    // Valor teste
-    this.milesBalance = 1000
   }
 
   async submitBooking() {
@@ -80,7 +79,7 @@ export class SecondPageBookingComponent implements OnInit {
       // Setar o id do usuário para a criação da reserva
       this.createBooking.idUser = this.user.id
       this.createBooking.codFlight = this.selectedFlight?.codigoVoo
-      this.createBooking.idUser = 'e1c347cc-056b-4a76-b371-262eae7140b0'
+      this.createBooking.idUser = this.customerId;
       console.log("Selected flight: ", this.selectedFlight)
       console.log("CreateBoking: ", this.createBooking)
       

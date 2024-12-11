@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ReusableModalComponent } from '../../../../../shared/modals/base/reusable-modal/reusable-modal.component';
@@ -16,6 +16,8 @@ import { StorageService } from '../../../../services/storage.service';
 })
 
 export class ModalBuyMilesComponent implements OnInit {
+
+  @Output() milesUpdated = new EventEmitter<void>();
 
   saldoAtual: number = 0;
   valorPorMilha: number = 5.00;
@@ -64,7 +66,8 @@ export class ModalBuyMilesComponent implements OnInit {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     this.http.patch(`http://localhost:3000/customers/${this.customerId}/miles/buy`, payload, { headers }).subscribe(response => {
       this.fetchCustomerMiles();
-      this.closeModal(); // Update the current balance after purchase
+      this.milesUpdated.emit();
+      this.closeModal(); 
       alert('Milhas compradas com sucesso!');
     }, error => {
       console.error("Erro ao confirmar compra:", error);

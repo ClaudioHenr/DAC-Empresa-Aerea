@@ -38,6 +38,11 @@ export class HomeScreenComponent implements OnInit {
   ngOnInit() {
     this.getCustomerData();
     this.fetchBookings();
+    this.fetchCustomerData();
+  }
+
+  onMilesUpdated(): void {
+    this.fetchCustomerData(); 
   }
 
   getCustomerData() {
@@ -51,9 +56,23 @@ export class HomeScreenComponent implements OnInit {
     }
   }
 
+  fetchCustomerData() {
+    const user = JSON.parse(localStorage.getItem("user") || '{}');
+    console.log(user);
+    if (user && user.id) {
+      const customerId = user.id;
+      this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
+        this.milesBalance = data.miles;
+      });
+    } else {
+      console.error("Usuário não encontrado no localStorage.");
+    }
+  }
+
+
   async fetchBookings() {
     const customerId = this.user.id
-    const result = await this.viewBookingService.getBookings("e1c347cc-056b-4a76-b371-262eae7140b0")
+    const result = await this.viewBookingService.getBookings(customerId)
     this.listBooking = result.data.bookings    
   }
 

@@ -43,6 +43,7 @@ export class FirstPageBookingComponent implements OnInit {
 
   ngOnInit() {
     this.fetchAirports();
+    this.fetchCustomerData();
   }
 
   fetchAirports() {

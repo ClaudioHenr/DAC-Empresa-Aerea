@@ -41,7 +41,7 @@ export class ModalUpdateEmployeeComponent implements OnInit {
 
   updateEmployee(): void {
     if (this.isFormValid()) {
-      this.http.put(`http://localhost:3000/employees/${this.employeeId}`, this.employee).subscribe(
+      this.http.put(`http://localhost:3000/employees/update/${this.employeeId}`, this.employee).subscribe(
         response => {
           console.log('Employee updated successfully', response);
           window.location.reload();
@@ -56,6 +56,20 @@ export class ModalUpdateEmployeeComponent implements OnInit {
   }
 
   isFormValid(): boolean {
-    return !!this.employee.name && !!this.employee.cpf && !!this.employee.email && !!this.employee.phone;
+    return !!this.employee.name && !!this.employee.email && !!this.employee.number;
+  }
+
+  formatPhone(event: any): void {
+    let value = event.target.value.replace(/\D/g, '');
+    if (value.length > 2) {
+      value = value.replace(/^(\d{2})(\d)/, '($1) $2');
+    }
+    if (value.length > 7) {
+      value = value.replace(/^(\(\d{2}\)) (\d{1})(\d)/, '$1 $2 $3');
+    }
+    if (value.length > 12) {
+      value = value.replace(/^(\(\d{2}\)) (\d{1}) (\d{4})(\d)/, '$1 $2 $3-$4');
+    }
+    event.target.value = value;
   }
 }

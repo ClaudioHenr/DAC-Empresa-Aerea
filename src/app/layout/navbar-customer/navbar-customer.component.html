@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
+  <div class="container">
     <a class="navbar-brand mx-auto" [routerLink]="['/home']">VoaTADS</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -25,8 +25,8 @@
         </li>
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" [routerLink]="['/login']">Logout</button>
+        <button class="btn btn-outline-danger my-2 my-sm-0" type="button" (click)="logout()">Logout</button>
       </form>
     </div>
   </div>
-  </nav>
+</nav>

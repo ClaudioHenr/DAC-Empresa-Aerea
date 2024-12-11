@@ -27,6 +27,7 @@ export class HomeScreenComponent implements OnInit {
   milesBalance: number = 0;
   user = this.loginService.getLocalStorage("user")
   selectedBooking: any;
+  customerName: string = '';
 
   constructor(
     private http: HttpClient, 
@@ -40,12 +41,14 @@ export class HomeScreenComponent implements OnInit {
   }
 
   getCustomerData() {
-    const user = this.loginService.getLocalStorage("user")
-    this.milesBalance = user.miles
-    // const customerId = 'ad237302-4b0c-48bf-abd9-d01a0c6e8a2e'; // Replace with actual customer ID
-    // this.http.get<any>(`http://localhost:3000/customers/${customerId}`).subscribe(data => {
-    //   this.milesBalance = data.miles;
-    // });
+    const user = JSON.parse(localStorage.getItem("user") || '{}');
+    if (user && user.name && user.miles !== undefined) {
+      this.customerName = user.name;
+      this.milesBalance = user.miles;
+      console.log(this.milesBalance)
+    } else {
+      console.error("Usuário não encontrado no localStorage.");
+    }
   }
 
   async fetchBookings() {

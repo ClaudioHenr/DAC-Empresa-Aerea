@@ -24,9 +24,9 @@ export class ModalInsertEmployeeComponent {
 
   constructor(private http: HttpClient) {}
 
-  registerEmployee() {
+  createEmployee() {
     if (this.isFormValid()) {
-      this.http.post('http://localhost:3000/employees', this.employee).subscribe(
+      this.http.post('http://localhost:3000/employees/create', this.employee).subscribe(
         response => {
           console.log('Employee registered successfully', response);
           window.location.reload();
@@ -41,6 +41,34 @@ export class ModalInsertEmployeeComponent {
   }
 
   isFormValid(): boolean {
-    return !!this.employee.name && !!this.employee.cpf && !!this.employee.email && !!this.employee.phone;
+    return !!this.employee.name && !!this.employee.cpf && !!this.employee.email && !!this.employee.number;
+  }
+
+  formatCPF(event: any): void {
+    let value = event.target.value.replace(/\D/g, '');
+    if (value.length > 3) {
+      value = value.replace(/^(\d{3})(\d)/, '$1.$2');
+    }
+    if (value.length > 7) {
+      value = value.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+    }
+    if (value.length > 11) {
+      value = value.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
+    }
+    event.target.value = value;
+  }
+  
+  formatPhone(event: any): void {
+    let value = event.target.value.replace(/\D/g, '');
+    if (value.length > 2) {
+      value = value.replace(/^(\d{2})(\d)/, '($1) $2');
+    }
+    if (value.length > 7) {
+      value = value.replace(/^(\(\d{2}\)) (\d{1})(\d)/, '$1 $2 $3');
+    }
+    if (value.length > 12) {
+      value = value.replace(/^(\(\d{2}\)) (\d{1}) (\d{4})(\d)/, '$1 $2 $3-$4');
+    }
+    event.target.value = value;
   }
 }

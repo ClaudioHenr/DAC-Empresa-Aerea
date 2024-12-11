@@ -17,15 +17,16 @@
                     </div>
             
                     <!-- CPF -->
-                    <label for="cpf">CPF</label>
+                    <!-- <label for="cpf">CPF</label>
                     <input type="text" class="form-control" placeholder="CPF" 
                             id="cpf" name="cpf" 
                             [(ngModel)]="employee.cpf" 
+                            (input)="formatCPF($event)" 
                             #cpfInput="ngModel" 
-                            required>
+                            required maxlength="14">
                     <div *ngIf="cpfInput.touched && cpfInput.errors" class="text-danger">
                       CPF é obrigatório.
-                    </div>
+                    </div> -->
             
                     <!-- Email -->
                     <label for="email">Email</label>
@@ -39,13 +40,14 @@
                     </div>
             
                     <!-- Telefone -->
-                    <label for="phone">Telefone</label>
+                    <label for="number">Telefone</label>
                     <input type="text" class="form-control" placeholder="Telefone" 
-                            id="phone" name="phone" 
-                            [(ngModel)]="employee.phone" 
-                            #phoneInput="ngModel" 
-                            required>
-                    <div *ngIf="phoneInput.touched && phoneInput.errors" class="text-danger">
+                            id="number" name="number" 
+                            [(ngModel)]="employee.number" 
+                            (input)="formatPhone($event)" 
+                            #numberInput="ngModel" 
+                            required maxlength="16">
+                    <div *ngIf="numberInput.touched && numberInput.errors" class="text-danger">
                       Telefone é obrigatório.
                     </div>                      
                   </div>

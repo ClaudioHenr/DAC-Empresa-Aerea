@@ -5,17 +5,22 @@ import axios from 'axios';
   providedIn: 'root'
 })
 export class CustomerHomeService {
-  url = 'http://localhost:3000/flights'
+  url = 'http://localhost:3000/flights';
 
   constructor() { }
 
-  getFlights() {
+  async getFlights() {
     try {
-      const result = axios.get(this.url)
-      return result 
+      const token = localStorage.getItem("token");
+      const result = await axios.get(this.url, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+      return result;
     } catch (error) {
-      console.error("Erro ao recuperar voos ", error)
-      throw error
+      console.error("Erro ao recuperar voos ", error);
+      throw error;
     }
   }
 }

@@ -4,16 +4,16 @@
 <app-modal-update-employee [employeeId]="selectedEmployeeId"></app-modal-update-employee>
 <app-modal-delete-employee [employeeId]="selectedEmployeeId"></app-modal-delete-employee>
 <!--Template principal da tela-->
-<div class="d-flex align-items-center justify-content-center vh-200 bg-orange flex-column">
-  <div class="w-100 h-90 padding-2">
-      <div class="bg-white w-100 h-200 rounded-3">
-          <div class="w-100 h-10">
+<div class="d-flex align-items-center justify-content-center bg-orange flex-column" style="height: 90vh;">
+  <div class="w-100 h-100 padding-2">
+      <div class="bg-white w-100 h-200 rounded-3" style="padding: 15px;">
+          <div class="w-100 h-90">
               <div class="d-flex justify-content-between align-items-center h-300 px-3">
                   <div>
                       <h3 class="m-0">Lista de Funcionários</h3>
                   </div>
                   <!--Ir para tela de cadastro de voo-->
-                  <div>
+                  <div style="margin-bottom: 10px;">
                     <a class="btn btn-orange text-white h-25 px-3" data-bs-toggle="modal" data-bs-target="#createEmployeeModal">Inserir</a>
                   </div>
               </div>

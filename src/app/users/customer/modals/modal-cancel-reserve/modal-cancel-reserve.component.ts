@@ -1,25 +1,17 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReusableModalComponent } from "../../../../../shared/modals/base/reusable-modal/reusable-modal.component";
-import { NgIf } from '@angular/common';
-
-interface Reserva {
-  origem: string;
-  destino: string;
-  data: Date;
-  horario: string;
-  valorPago: number;
-  milhas: number;
-  valorTotal: number;
-}
+import { BookingView } from '../../../../../shared/models/BookingView.model';
+import { CommonModule } from '@angular/common';
+import { CancelBookingService } from './services/cancel-booking.service';
 
 @Component({
   selector: 'app-modal-cancel-reserve',
   standalone: true,
   imports: [
-    NgIf,
     FormsModule,
-    ReusableModalComponent
+    ReusableModalComponent,
+    CommonModule
   ],
   templateUrl: './modal-cancel-reserve.component.html',
   styleUrl: './modal-cancel-reserve.component.css'
@@ -27,19 +19,14 @@ interface Reserva {
 
 export class ModalCancelReserveComponent {
   @Input() showModal: boolean = false;
-  @Input()
-  flight!: {
-    origin: string;
-    destination: string;
-    time: string;
-    data:Date;
-    price:number;
-  };
-  // @Output() cancelado = new EventEmitter<void>();
+  @Input() selectedBooking?: BookingView | null = null;
 
-  confirmarCancelamento() {
-    // this.cancelado.emit();
-    // this.showModal = false;
+  constructor(private cancelBooking: CancelBookingService) {}
+
+  async confirmarCancelamento() {
+    // Status da reserva deve ir para CANCELADA
+    const result = await this.cancelBooking.cancelBooking(this.selectedBooking?.id);
+    alert(`${result.data.message}`)
   }
   
 }

@@ -21,7 +21,8 @@
             </div>
 
             <div class="w-100 h-90 px-3">
-                <h3 class="m-0">Visualizando a reserva: <span class="text-orange m-0">#AAA111</span></h3>
+                <!-- <h3 class="m-0">Visualizando a reserva: <span class="text-orange m-0">#AAA111</span></h3> -->
+                <h3 class="m-0">Lista de reservas:</h3>
                 <div class="rounded border border-dark">
                     <table class="table table-hover table-bordered m-0 border-dark">
                         <thead class="align-middle text-center">
@@ -30,38 +31,18 @@
                                 <th class="text-white bg-orange-darker">Código</th>
                                 <th class="text-white bg-orange-darker">Origem</th>
                                 <th class="text-white bg-orange-darker">Destino</th>
-                                <th class="text-white bg-orange-darker">Valor(R$)</th>
-                                <th class="text-white bg-orange-darker">Milhas</th>
+                                <!-- <th class="text-white bg-orange-darker">Valor(R$)</th> -->
+                                <!-- <th class="text-white bg-orange-darker">Milhas</th> -->
                                 <th class="text-white bg-orange-darker">Status</th>
                             </tr>
                         </thead>
                         <tbody class="align-middle text-center">
-                            <tr>
-                                <td>26/09/2024<br>13:55</td>
-                                <td>#AAA111</td>
-                                <td>CWB<br>Afonso Pena</td>
-                                <td>GIG<br>Galeão</td>
-                                <td>1,112.00</td>
-                                <td>556</td>
-                                <td class="text-warning fw-medium">Reservada</td>
-                            </tr>
-                            <tr>
-                                <td>26/09/2024<br>13:55</td>
-                                <td>#AAA111</td>
-                                <td>CWB<br>Afonso Pena</td>
-                                <td>GIG<br>Galeão</td>
-                                <td>1,112.00</td>
-                                <td>556</td>
-                                <td class="text-success fw-medium">Confirmada</td>
-                            </tr>
-                            <tr>
-                                <td>26/09/2024<br>13:55</td>
-                                <td>#AAA111</td>
-                                <td>CWB<br>Afonso Pena</td>
-                                <td>GIG<br>Galeão</td>
-                                <td>1,112.00</td>
-                                <td>556</td>
-                                <td class="text-danger fw-medium">Cancelada</td>
+                            <tr *ngFor="let booking of bookings">
+                                <td>{{booking.timeBooking | date: 'dd/MM/yyyy HH:mm' }}</td>
+                                <td>{{booking.codBooking}}</td>
+                                <td>{{booking.flightDetails?.aeroportoOrigem}}</td>
+                                <td>{{booking.flightDetails?.aeroportoDestino}}</td>
+                                <td [ngClass]="getStatusClass(booking.status)">{{ booking.status }}</td>
                             </tr>
                         </tbody>
                     </table>

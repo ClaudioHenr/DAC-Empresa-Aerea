@@ -79,7 +79,7 @@ export class SecondPageBookingComponent implements OnInit {
       // Setar o id do usuário para a criação da reserva
       this.createBooking.idUser = this.user.id
       this.createBooking.codFlight = this.selectedFlight?.codigoVoo
-      this.createBooking.idUser = this.customerId;
+      console.log(this.user.id)
       console.log("Selected flight: ", this.selectedFlight)
       console.log("CreateBoking: ", this.createBooking)
       

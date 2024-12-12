@@ -37,7 +37,7 @@ export class CheckBookingComponent implements OnInit {
 
   async fetchBookings() {
     const customerId = this.user.id
-    const result = await this.viewBookingService.getBookings("e1c347cc-056b-4a76-b371-262eae7140b0")
+    const result = await this.viewBookingService.getBookings(customerId)
     console.log(result)
     this.listBooking = result.data.bookings    
   }

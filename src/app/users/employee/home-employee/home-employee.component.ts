@@ -7,6 +7,7 @@ import { ModalConfirmFlightComponent } from "../modals/modal-confirm-flight/moda
 import { ModalCancelFlightComponent } from "../modals/modal-cancel-flight/modal-cancel-flight.component";
 import { RouterLink } from '@angular/router';
 import { HomeEmployeeService } from './services/home-employee.service';
+import { LoginService } from '../../../authentication/login/services/login.service';
 
 @Component({
   selector: 'app-home-employee',
@@ -24,13 +25,16 @@ import { HomeEmployeeService } from './services/home-employee.service';
   styleUrl: './home-employee.component.css'
 })
 export class HomeEmployeeComponent {
-  listFlight: Flight[] = []
-  filteredFlights: Flight[] = []
+  listFlight: Flight[] = [];
+  filteredFlights: Flight[] = [];
+  user = this.loginService.getLocalStorage("user");
+  userName: string = '';
 
-  constructor( private homeEmployeeService: HomeEmployeeService ) {}
+  constructor( private homeEmployeeService: HomeEmployeeService, private loginService: LoginService, ) {}
 
   ngOnInit(): void {
     this.fetchFlights()
+    this.fetchemployeeData();
   }
 
   async fetchFlights() {
@@ -43,6 +47,12 @@ export class HomeEmployeeComponent {
     } catch (error: any) {
       throw error
     } 
+  }
+
+  fetchemployeeData() {
+    const user = JSON.parse(localStorage.getItem("user") || '{}');
+    console.log(user);
+    this.userName = user.name;
   }
 
   handleFlights() {

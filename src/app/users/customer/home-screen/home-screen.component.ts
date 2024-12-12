@@ -73,6 +73,7 @@ export class HomeScreenComponent implements OnInit {
   async fetchBookings() {
     const customerId = this.user.id
     const result = await this.viewBookingService.getBookings(customerId)
+    console.log(result)
     this.listBooking = result.data.bookings    
   }
 
